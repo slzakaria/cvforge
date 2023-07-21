@@ -8,21 +8,15 @@ import {
 	Box,
 } from "@chakra-ui/react";
 
-export default function BadgeInput({
-	label,
-	placeholder,
-	onChange,
-	name,
-	...props
-}) {
+export default function BadgeInput({ ...props }) {
 	return (
 		<Box as='div'>
 			<Stack direction={["column", "row"]} spacing='1em'>
 				<TextInput
 					type='text'
-					label={label}
-					placeholder={placeholder}
-					name={name}
+					label={props.label}
+					placeholder={props.placeholder}
+					name={props.name}
 				/>
 				<Button colorScheme='twitter' variant='outline'>
 					+

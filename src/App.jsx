@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import SettingsPanel from "../src/components/SettingsPanel";
 
 function App() {
@@ -13,7 +13,9 @@ function App() {
 					<SettingsPanel style={{ margin: "0 auto" }} />
 				</Box>
 				<Box bg='#003366' padding='2em' width='60dvw' overflow='hidden'>
-					<h1>Column two</h1>
+					<Text fontWeight='bold' color='white' fontSize='2em'>
+						Template Panel
+					</Text>
 				</Box>
 			</Box>
 		</Box>

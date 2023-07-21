@@ -7,7 +7,7 @@ import {
 	Text,
 	Stack,
 } from "@chakra-ui/react";
-import TextInput from "../inputs/TextInput";
+import StandardInput from "../inputs/TextInput";
 import TextArea from "../inputs/AreaInput";
 
 function PersonalDetail() {
@@ -16,8 +16,8 @@ function PersonalDetail() {
 			<h2>
 				<AccordionButton
 					borderRadius='10px'
-					_hover={{ bg: "#99C5D6", color: "white" }}
-					_expanded={{ bg: "#99C5D6", color: "white" }}>
+					_hover={{ bg: "lightsteelblue", color: "white" }}
+					_expanded={{ bg: "lightsteelblue", color: "white" }}>
 					<Box as='span' flex='1' textAlign='left'>
 						<Text fontWeight='bold'>Personal Details</Text>
 					</Box>
@@ -26,37 +26,37 @@ function PersonalDetail() {
 			</h2>
 			<AccordionPanel pb={2}>
 				<Stack spacing={6} marginTop='1em'>
-					<TextInput
+					<StandardInput
 						label='Job title / current position'
 						name='jobtitle'
 						type='text'
 						placeholder='Job title / current position'
 					/>
-					<TextInput
+					<StandardInput
 						label='First name'
 						name='firstName'
 						type='text'
 						placeholder='First name'
 					/>
-					<TextInput
+					<StandardInput
 						label='Last name'
 						name='lastName'
 						type='text'
 						placeholder='Last name'
 					/>
-					<TextInput
+					<StandardInput
 						label='Email'
 						type='email'
 						name='email'
 						placeholder='email@youremail.com'
 					/>
-					<TextInput
+					<StandardInput
 						label='Phone number'
 						type='tel'
 						name='phone'
 						placeholder='Phone : (xxx) xxx-xxxx'
 					/>
-					<TextInput
+					<StandardInput
 						label='Location'
 						type='text'
 						name='location'

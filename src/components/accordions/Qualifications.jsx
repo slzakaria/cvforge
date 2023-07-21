@@ -14,16 +14,16 @@ function Qualifications() {
 		<AccordionItem marginTop='2em' style={{ borderTop: "none" }}>
 			<h2>
 				<AccordionButton
-					borderRadius='10px'
-					_hover={{ bg: "#99C5D6", color: "white" }}
-					_expanded={{ bg: "#99C5D6", color: "white" }}>
+					borderRadius='5px'
+					_hover={{ bg: "lightsteelblue", color: "white" }}
+					_expanded={{ bg: "lightsteelblue", color: "white" }}>
 					<Box as='span' flex='1' textAlign='left'>
 						<Text fontWeight='bold'>Qualifications</Text>
 					</Box>
 					<AccordionIcon />
 				</AccordionButton>
 			</h2>
-			<AccordionPanel pb={2}>
+			<AccordionPanel pb={2} marginTop='1em'>
 				<Stack spacing={6} marginTop='1em'>
 					<BadgeInput
 						label='Technical skills'

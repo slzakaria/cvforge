@@ -1,27 +1,22 @@
-import { Textarea } from "@chakra-ui/react";
+import { Textarea, FormLabel } from "@chakra-ui/react";
 
-export default function TextArea({
-	label,
-	placeholder,
-	value,
-	onChange,
-	name,
-	...props
-}) {
+export default function TextArea({ ...props }) {
 	return (
 		<>
-			<label htmlFor={name}>{label}</label>
+			<FormLabel color='#003366' htmlFor={props.name}>
+				{props.label}
+			</FormLabel>
 			<Textarea
-				name={name}
-				placeholder={placeholder}
+				name={props.name}
+				placeholder={props.placeholder}
 				size='md'
-				value={value}
-				onChange={onChange}
+				value={props.value}
+				onChange={props.onChange}
 				resize='vertical'
-				focusBorderColor='#003366'
 				borderColor='#003366'
 				_hover={{ borderColor: "#003366" }}
-				{...props}
+				_placeholder={{ opacity: 1, color: "#003366" }}
+				focusBorderColor='blue.500'
 			/>
 		</>
 	);
