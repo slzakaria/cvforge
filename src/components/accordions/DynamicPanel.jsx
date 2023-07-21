@@ -5,11 +5,12 @@ import {
 	AccordionPanel,
 	AccordionIcon,
 	Box,
-	CloseButton,
+	Button,
 	Stack,
 } from "@chakra-ui/react";
+import { DeleteIcon } from "@chakra-ui/icons";
 
-import StandardInput from "../inputs/TextInput";
+import StandardInput from "../inputs/StandardInput";
 import TextArea from "../inputs/AreaInput";
 
 function DynamicPanel({ ...props }) {
@@ -22,7 +23,10 @@ function DynamicPanel({ ...props }) {
 			justifyContent='space-between'
 			alignItems='center'
 			marginTop='1em'>
-			<CloseButton size='sm' bg='red' color='white' />
+			<Button bg='red' color='white' size='sm' marginRight='0.5em'>
+				{" "}
+				<DeleteIcon />{" "}
+			</Button>
 			<Accordion allowToggle flex='1'>
 				<AccordionItem>
 					<h2>
@@ -35,44 +39,44 @@ function DynamicPanel({ ...props }) {
 						<Stack spacing={6}>
 							<StandardInput
 								label='Title'
-								name='title'
+								name='dynamic-title'
 								type='text'
 								placeholder='Title'
 							/>
 							<StandardInput
 								hidden={props.link === undefined ? false : true}
 								label='Location'
-								name='Location'
+								name='dynamic-location'
 								type='text'
 								placeholder='City  , Country'
 							/>
 							<StandardInput
 								hidden={props.link === undefined ? true : false}
 								label='URL'
-								name='url'
+								name='dynamic-url'
 								type='link'
 								placeholder='https://www.example.com'
 							/>
 							<StandardInput
 								hidden={props.link === undefined ? true : false}
 								label='Date'
-								name='date'
+								name='dynamic-date'
 								type='date'
 							/>
 							<StandardInput
 								hidden={props.link === undefined ? false : true}
 								label='Date from'
-								name='dateFrom'
+								name='dynamic-dateFrom'
 								type='date'
 							/>
 							<StandardInput
 								hidden={props.link === undefined ? false : true}
 								label='Date to'
-								name='dateTo'
+								name='dynamic-dateTo'
 								type='date'
 							/>
 							<TextArea
-								name='summary'
+								name='dynamic-summary'
 								label='Summary'
 								placeholder='Brief description'
 							/>

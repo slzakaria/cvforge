@@ -1,15 +1,6 @@
-import {
-	Accordion,
-	AccordionItem,
-	AccordionButton,
-	AccordionPanel,
-	AccordionIcon,
-	Box,
-	CloseButton,
-	Stack,
-} from "@chakra-ui/react";
+import { Stack } from "@chakra-ui/react";
 
-import StandardInput from "../inputs/TextInput";
+import StandardInput from "../inputs/StandardInput";
 
 function SocialsPanel({ ...props }) {
 	return (

@@ -7,7 +7,7 @@ import {
 	Text,
 	Stack,
 } from "@chakra-ui/react";
-import StandardInput from "../inputs/TextInput";
+import StandardInput from "../inputs/StandardInput";
 import TextArea from "../inputs/AreaInput";
 
 function PersonalDetail() {

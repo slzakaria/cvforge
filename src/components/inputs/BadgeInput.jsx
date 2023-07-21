@@ -1,4 +1,4 @@
-import TextInput from "./TextInput";
+import StandardInput from "./StandardInput";
 import {
 	Button,
 	Stack,
@@ -6,13 +6,17 @@ import {
 	TagLabel,
 	TagCloseButton,
 	Box,
+	FormLabel,
 } from "@chakra-ui/react";
 
 export default function BadgeInput({ ...props }) {
 	return (
 		<Box as='div'>
 			<Stack direction={["column", "row"]} spacing='1em'>
-				<TextInput
+				<FormLabel hidden htmlFor={props.name}>
+					{props.label}
+				</FormLabel>
+				<StandardInput
 					type='text'
 					label={props.label}
 					placeholder={props.placeholder}
