@@ -1,12 +1,9 @@
 import { Box } from "@chakra-ui/react";
-import SettingsPanel from "../src/components/SettingsPanel";
-import TemplatePanel from "./components/TemplatePanel";
-import { useState } from "react";
+import SettingsPanel from "./components/ui/SettingsPanel";
+import TemplatePanel from "./components/ui/TemplatePanel";
+import { useEffect, useState } from "react";
 
 function App() {
-	const getSavedForm = localStorage.getItem("formSettings");
-	const [formSettings, setFormSettings] = useState(getSavedForm || []);
-
 	const initialData = {
 		formSettings: {
 			jobTitle: "Front end Web developer",
@@ -106,19 +103,23 @@ function App() {
 		},
 	};
 
+	useEffect(() => {
+		let data = JSON.stringify(initialData);
+		localStorage.setItem("formSettings", data);
+	}, []);
+
+	const getSavedForm = localStorage.getItem("formSettings");
+	const [formSettings, setFormSettings] = useState(getSavedForm || []);
+
 	console.info(initialData);
 
 	return (
 		<Box>
-			<Box
-				minHeight='100dvh'
-				display='flex'
-				justifyContent='space-between'
-				as='div'>
-				<Box padding='1em' width='40dvw' bg='#F8FBFD' boxShadow='md'>
+			<Box minHeight='100dvh' display='flex' justifyContent='normal' as='div'>
+				<Box padding='1em' width='[30dvw,40dvw]' bg='#F8FBFD' boxShadow='md'>
 					<SettingsPanel style={{ margin: "0 auto" }} />
 				</Box>
-				<Box bg='white' padding='2em' width='60dvw' overflow='hidden'>
+				<Box bg='white' padding='2em' width='auto' overflow='hidden'>
 					<TemplatePanel />
 				</Box>
 			</Box>

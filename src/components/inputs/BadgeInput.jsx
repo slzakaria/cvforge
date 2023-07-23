@@ -35,18 +35,6 @@ export default function BadgeInput({ ...props }) {
 					<TagLabel>React</TagLabel>
 					<TagCloseButton />
 				</Tag>
-				<Tag size='md' borderRadius='lg' variant='solid' colorScheme='blue'>
-					<TagLabel>React</TagLabel>
-					<TagCloseButton />
-				</Tag>
-				<Tag size='md' borderRadius='lg' variant='solid' colorScheme='blue'>
-					<TagLabel>React</TagLabel>
-					<TagCloseButton />
-				</Tag>
-				<Tag size='md' borderRadius='lg' variant='solid' colorScheme='blue'>
-					<TagLabel>React</TagLabel>
-					<TagCloseButton />
-				</Tag>
 			</Stack>
 		</Box>
 	);

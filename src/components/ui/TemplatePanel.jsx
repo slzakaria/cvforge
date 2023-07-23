@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import SideCv from "./ui/SideCv";
+import SideCv from "./SideCv";
 
 function TemplatePanel() {
 	return (
