@@ -38,10 +38,24 @@ function App() {
 				{ lang: "Arabic", level: "0%" },
 				{ lang: "French", level: "0%" },
 			],
-			linkedin: "zackaria-slimane",
-			twitter: "gitignorer",
-			github: "Zackaria-Slimane",
-			website: "https://zackariasl.dev/",
+			socials: [
+				{
+					name: "Linkedin",
+					link: "zackaria-slimane",
+				},
+				{
+					name: "Twitter",
+					link: "gitignorer",
+				},
+				{
+					name: "Github",
+					link: "Zackaria-Slimane",
+				},
+				{
+					name: "Website",
+					link: "https://zackariasl.dev/",
+				},
+			],
 			education: [
 				{
 					title: "",
@@ -106,20 +120,26 @@ function App() {
 	useEffect(() => {
 		let data = JSON.stringify(initialData);
 		localStorage.setItem("formSettings", data);
+		setFormSettings(initialData);
 	}, []);
 
-	const getSavedForm = localStorage.getItem("formSettings");
-	const [formSettings, setFormSettings] = useState(getSavedForm || []);
+	const [formSettings, setFormSettings] = useState([]);
 
-	console.info(initialData);
+	console.info("formSettings object at root", formSettings.formSettings);
 
 	return (
 		<Box>
 			<Box minHeight='100dvh' display='flex' justifyContent='normal' as='div'>
-				<Box padding='1em' width='[30dvw,40dvw]' bg='#F8FBFD' boxShadow='md'>
+				<Box padding='1em' width='[35dvw,40dvw]' bg='#F8FBFD' boxShadow='md'>
 					<SettingsPanel style={{ margin: "0 auto" }} />
 				</Box>
-				<Box bg='white' padding='2em' width='auto' overflow='hidden'>
+				<Box
+					bg='white'
+					padding='2em'
+					width='auto'
+					margin='0 auto'
+					overflow='hidden'
+					id='templatePanel'>
 					<TemplatePanel />
 				</Box>
 			</Box>

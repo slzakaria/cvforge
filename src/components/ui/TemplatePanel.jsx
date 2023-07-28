@@ -22,8 +22,8 @@ function TemplatePanel() {
 				gap='1em'
 				width='21cm'
 				maxWidth='21cm'
-				minHeight='21cm'
-				height='fit-content'
+				minHeight='24cm'
+				height='auto'
 				fontSize='0.875em'>
 				<div style={{ background: "#F8FBFD" }}>
 					<SideCv />
