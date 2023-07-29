@@ -8,11 +8,11 @@ function App() {
 		formSettings: {
 			jobTitle: "Front end Web developer",
 			name: "Zakaria",
-			lastName: "slimane",
+			lastName: "SLIMANE",
 			email: "zakaria.slimane@hotmail.fr",
 			location: "Casablanca, Morocco",
 			phoneNumber: "+212 699 33 65 09",
-			aboutme:
+			aboutMe:
 				"A passionate front end developer and javascript enthusiast. With experience in the Vue JS.\n\nI'm currently working full-time for ADHOC Agency as a web developer while also developing  a basic expense and budget tracking web application. Learning and practicing React",
 			jobSkills: [
 				"Vue",
@@ -41,37 +41,28 @@ function App() {
 			socials: [
 				{
 					name: "Linkedin",
-					link: "zackaria-slimane",
+					link: "https://www.linkedin.com/in/zackaria-slimane/",
 				},
 				{
 					name: "Twitter",
-					link: "gitignorer",
+					link: "https://twitter.com/gitignorer",
 				},
 				{
 					name: "Github",
-					link: "Zackaria-Slimane",
+					link: "https://github.com/Zackaria-Slimane",
 				},
 				{
 					name: "Website",
 					link: "https://zackariasl.dev/",
 				},
 			],
-			education: [
-				{
-					title: "",
-					location: "",
-					from: "2023-07-21T11:24:16.325Z",
-					to: "2023-07-21T11:24:16.325Z",
-					current: false,
-					summary: "",
-				},
-			],
+			education: [],
 			work: [
 				{
 					title: "ADHOC AGENCY - Web Developer",
 					location: "Casablanca , Morroco",
 					from: "2022-05-15",
-					to: "2012-02-01T00:00:00.000Z",
+					to: "current",
 					current: true,
 					summary:
 						"- Wordpress sites creation , maintenance and customisation.\n- Shopify sites creation , maintenance and customisation.\n- Creating custom javascript scripts for client needs. \n- Handling Hosting , deployments and servers inhouse and for clients.\n- Managing and integrating google tags and facebook pixels in websites ",
@@ -94,8 +85,8 @@ function App() {
 					summaryArr: [
 						" Building front end applications for transport management software SaaS ,",
 						" Successfully updated legacy code multi pages / routes app into a single page application. Refactoring legacy code to new api with newer and more reusable components and in-house plugins.",
-						"Formalizing the views and usage flow across different pages .",
-						" Building NodeJS based automation tools for excel read/write , export",
+						"Formalizing the views and usage flow across different pages.",
+						" Building NodeJS based automation tools for excel read/write,export",
 						"Suggested and did an implementation of Nodejs - expressJS backend to benchmark against existing .net solution",
 					],
 				},

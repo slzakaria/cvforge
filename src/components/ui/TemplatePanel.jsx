@@ -1,5 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import SideCv from "./SideCv";
+import MainCv from "./MainCv";
 
 function TemplatePanel() {
 	return (
@@ -28,8 +29,8 @@ function TemplatePanel() {
 				<div style={{ background: "#F8FBFD" }}>
 					<SideCv />
 				</div>
-				<div style={{ color: "white", background: "lightsteelblue" }}>
-					Main cv
+				<div style={{ color: "black" }}>
+					<MainCv />
 				</div>
 			</Box>
 			{/* CV container ^ */}

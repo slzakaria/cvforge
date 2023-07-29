@@ -21,7 +21,6 @@ import { useEffect, useState } from "react";
 
 function SideCv() {
 	const [cv, setCv] = useState(null);
-
 	useEffect(() => {
 		let data = JSON.parse(localStorage.getItem("formSettings"));
 		setTimeout(() => {
@@ -61,26 +60,32 @@ function SideCv() {
 	});
 
 	let socials = cv?.socials.map((item) => {
+		let icon = null;
+		if (item.name == "Twitter") {
+			icon = LiaTwitter;
+		} else if (item.name == "Github") {
+			icon = LiaGithub;
+		} else if (item.name == "Linkedin") {
+			icon = LiaLinkedinIn;
+		} else if (item.name == "Website") {
+			icon = LiaSafari;
+		}
 		return (
-			<li>
-				{item.name === "twitter" && <LiaTwitter />}
-				<a
-					href={item.link}
-					target='_blank'
-					rel='noopener noreferrer'
-					key={item.name}>
-					{item.link}
+			<ListItem key={item.name}>
+				<ListIcon as={icon} color={cv.activeColor} />
+				<a href={item.link} style={{ marginRight: "0.5em", fontSize: "0.9em" }}>
+					{item.name}
 				</a>
-			</li>
+			</ListItem>
 		);
 	});
 
 	if (cv === null)
 		return (
 			<>
-				<Box as='div' margin='0 auto' padding={4}>
-					<Stack spacing={6}>
-						<Skeleton height='90dvh' />
+				<Box as='div' margin='0 auto' padding={2}>
+					<Stack spacing={2}>
+						<Skeleton height='100dvh' />
 					</Stack>
 				</Box>
 			</>
@@ -89,7 +94,7 @@ function SideCv() {
 	return (
 		<>
 			{/* Contact section */}
-			<Box as='div' id='title_section' padding={4}>
+			<Box as='div' padding={4}>
 				<Stack spacing={1}>
 					<Text
 						as='h1'
@@ -108,9 +113,6 @@ function SideCv() {
 					</Text>
 					<Divider size='md' />
 					<Stack spacing={1}>
-						<Text fontSize='1em' fontWeight='bold'>
-							Contact{" "}
-						</Text>
 						<Text
 							as='h3'
 							fontSize='0.8em'
@@ -206,9 +208,9 @@ function SideCv() {
 					<Text fontSize='1em' fontWeight='bold'>
 						Socials
 					</Text>
-					<Stack as='ul' spacing='.2em' marginTop='0.2em' wrap='wrap'>
+					<List spacing='.2em' wrap='wrap'>
 						{socials}
-					</Stack>
+					</List>
 				</Stack>
 			</Box>
 		</>
