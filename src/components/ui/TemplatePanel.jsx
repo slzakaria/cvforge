@@ -1,11 +1,16 @@
 import { Box } from "@chakra-ui/react";
 import SideCv from "./SideCv";
 import MainCv from "./MainCv";
-import { useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import CvContext from "../../utils/cvContext";
 
-function TemplatePanel(data) {
-	const [cvData, setCvData] = useState(data.data);
-	console.log("cvData at template", cvData);
+function TemplatePanel() {
+	const { sharedData } = useContext(CvContext);
+	const [cvData, setCvData] = useState("");
+
+	useEffect(() => {
+		setCvData(sharedData);
+	}, [sharedData]);
 
 	return (
 		<Box as='div' overflowX='hidden' overflowY='auto' display='flex' pos='relative'>
@@ -26,10 +31,10 @@ function TemplatePanel(data) {
 				height='auto'
 				fontSize='0.875em'>
 				<div style={{ background: "#F8FBFD" }}>
-					<SideCv data={cvData} />
+					<SideCv />
 				</div>
 				<div style={{ color: "black" }}>
-					<MainCv data={cvData} />
+					<MainCv />
 				</div>
 			</Box>
 			{/* CV container ^ */}

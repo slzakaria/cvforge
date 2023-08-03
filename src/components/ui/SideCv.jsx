@@ -12,10 +12,16 @@ import {
 } from "@chakra-ui/react";
 import { EmailIcon, PhoneIcon, InfoOutlineIcon } from "@chakra-ui/icons";
 import { LiaTwitter, LiaGithub, LiaLinkedinIn, LiaSafari } from "react-icons/lia";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import CvContext from "../../utils/cvContext";
 
-function SideCv(data) {
-	const [cv, setCv] = useState(data.data);
+function SideCv() {
+	const { sharedData } = useContext(CvContext);
+	const [cv, setCv] = useState(sharedData);
+
+	useEffect(() => {
+		setCv(sharedData);
+	}, [sharedData]);
 
 	let jobSkills = cv?.jobSkills.map((skill) => {
 		return (

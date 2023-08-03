@@ -1,8 +1,14 @@
 import { Box, Text, Stack, Skeleton, Divider } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import CvContext from "../../utils/cvContext";
 
 function MainCv(data) {
-	const [mainCv, setMainCv] = useState(data.data);
+	const { sharedData } = useContext(CvContext);
+	const [mainCv, setMainCv] = useState(sharedData);
+
+	useEffect(() => {
+		setMainCv(sharedData);
+	}, [sharedData]);
 
 	let workHistory = mainCv?.work.map((item) => {
 		let highpoints = item.summaryArr.map((summary) => {
