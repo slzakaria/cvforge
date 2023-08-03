@@ -1,15 +1,8 @@
 import { Box, Text, Stack, Skeleton, Divider } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
-function MainCv() {
-	const [mainCv, setMainCv] = useState(null);
-
-	useEffect(() => {
-		let data = JSON.parse(localStorage.getItem("formSettings"));
-		setTimeout(() => {
-			setMainCv(data.formSettings);
-		}, 2500);
-	}, []);
+function MainCv(data) {
+	const [mainCv, setMainCv] = useState(data.data);
 
 	let workHistory = mainCv?.work.map((item) => {
 		let highpoints = item.summaryArr.map((summary) => {

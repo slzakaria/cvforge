@@ -11,31 +11,15 @@ import {
 	ListIcon,
 } from "@chakra-ui/react";
 import { EmailIcon, PhoneIcon, InfoOutlineIcon } from "@chakra-ui/icons";
-import {
-	LiaTwitter,
-	LiaGithub,
-	LiaLinkedinIn,
-	LiaSafari,
-} from "react-icons/lia";
-import { useEffect, useState } from "react";
+import { LiaTwitter, LiaGithub, LiaLinkedinIn, LiaSafari } from "react-icons/lia";
+import { useState } from "react";
 
-function SideCv() {
-	const [cv, setCv] = useState(null);
-	useEffect(() => {
-		let data = JSON.parse(localStorage.getItem("formSettings"));
-		setTimeout(() => {
-			setCv(data.formSettings);
-		}, 2500);
-	}, []);
+function SideCv(data) {
+	const [cv, setCv] = useState(data.data);
 
 	let jobSkills = cv?.jobSkills.map((skill) => {
 		return (
-			<Tag
-				key={skill}
-				size='sm'
-				borderRadius='sm'
-				variant='solid'
-				bg={cv.activeColor}>
+			<Tag key={skill} size='sm' borderRadius='sm' variant='solid' bg={cv.activeColor}>
 				<TagLabel fontSize='0.8em'>{skill}</TagLabel>
 			</Tag>
 		);
@@ -96,11 +80,7 @@ function SideCv() {
 			{/* Contact section */}
 			<Box as='div' padding={4}>
 				<Stack spacing={1}>
-					<Text
-						as='h1'
-						fontSize='1.675em'
-						fontWeight='semibold'
-						wordBreak='break-word'>
+					<Text as='h1' fontSize='1.675em' fontWeight='semibold' wordBreak='break-word'>
 						{cv.name} {cv.lastName}
 					</Text>
 					<Text
@@ -113,31 +93,19 @@ function SideCv() {
 					</Text>
 					<Divider size='md' />
 					<Stack spacing={1}>
-						<Text
-							as='h3'
-							fontSize='0.8em'
-							fontWeight='semibold'
-							wordBreak='break-word'>
+						<Text as='h3' fontSize='0.8em' fontWeight='semibold' wordBreak='break-word'>
 							<span style={{ marginRight: "0.5em" }}>
 								<EmailIcon />
 							</span>
 							{cv.email}
 						</Text>
-						<Text
-							as='h3'
-							fontSize='0.8em'
-							fontWeight='semibold'
-							wordBreak='break-word'>
+						<Text as='h3' fontSize='0.8em' fontWeight='semibold' wordBreak='break-word'>
 							<span style={{ marginRight: "0.5em" }}>
 								<PhoneIcon />
 							</span>
 							{cv.phoneNumber}
 						</Text>
-						<Text
-							as='h3'
-							fontSize='0.8em'
-							fontWeight='semibold'
-							wordBreak='break-word'>
+						<Text as='h3' fontSize='0.8em' fontWeight='semibold' wordBreak='break-word'>
 							<span style={{ marginRight: "0.5em" }}>
 								<InfoOutlineIcon />
 							</span>
@@ -171,12 +139,7 @@ function SideCv() {
 					<Text fontSize='1em' fontWeight='bold'>
 						Soft skills
 					</Text>
-					<Stack
-						padding={2}
-						as='ul'
-						spacing='.1em'
-						marginTop='0.3em'
-						wrap='wrap'>
+					<Stack padding={2} as='ul' spacing='.1em' marginTop='0.3em' wrap='wrap'>
 						{softSkills}
 					</Stack>
 				</Stack>
