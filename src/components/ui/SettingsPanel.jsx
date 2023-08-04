@@ -8,7 +8,6 @@ import { useContext, useState } from "react";
 function SettingsPanel() {
 	const { sharedData, updateSharedData } = useContext(CvContext);
 	const [newText, setNewText] = useState(sharedData.name);
-	const [count, setCount] = useState(0);
 
 	const handleChange = (event) => {
 		const updatedText = event.target.value;
@@ -17,7 +16,7 @@ function SettingsPanel() {
 	};
 
 	const handleUpdate = (updatedText) => {
-		updateSharedData({ ...sharedData, name: updatedText, count: count });
+		updateSharedData({ ...sharedData, name: updatedText });
 	};
 
 	return (

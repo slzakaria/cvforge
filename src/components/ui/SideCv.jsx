@@ -42,8 +42,8 @@ function SideCv() {
 	let langList = cv?.languages.map((item) => {
 		if (cv.languages)
 			return (
-				<li style={{ fontSize: "0.9em" }} key={item.lang}>
-					{item.lang}
+				<li style={{ fontSize: "0.9em" }} key={item}>
+					{item}
 				</li>
 			);
 		else return null;
@@ -89,12 +89,7 @@ function SideCv() {
 					<Text as='h1' fontSize='1.675em' fontWeight='semibold' wordBreak='break-word'>
 						{cv.name} {cv.lastName}
 					</Text>
-					<Text
-						as='h1'
-						fontSize='1.6em'
-						fontWeight='bold'
-						wordBreak='break-word'
-						color={cv.activeColor}>
+					<Text as='h1' fontSize='1.6em' fontWeight='bold' wordBreak='break-word' color={cv.activeColor}>
 						{cv.jobTitle}
 					</Text>
 					<Divider size='md' />
@@ -128,11 +123,7 @@ function SideCv() {
 					<Text fontSize='1em' fontWeight='bold'>
 						Skills & Qualifications
 					</Text>
-					<Stack
-						direction={["column", "row"]}
-						spacing='.5em'
-						marginTop='0.3em'
-						wrap='wrap'>
+					<Stack direction={["column", "row"]} spacing='.5em' marginTop='0.3em' wrap='wrap'>
 						{jobSkills}
 					</Stack>
 				</Stack>
@@ -158,13 +149,7 @@ function SideCv() {
 					<Text fontSize='1em' fontWeight='bold'>
 						Languagues
 					</Text>
-					<Stack
-						as='ul'
-						id='languages_section'
-						spacing='.2em'
-						marginTop='0.2em'
-						padding={2}
-						wrap='wrap'>
+					<Stack as='ul' id='languages_section' spacing='.2em' marginTop='0.2em' padding={2} wrap='wrap'>
 						{langList}
 					</Stack>
 				</Stack>

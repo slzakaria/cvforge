@@ -7,13 +7,57 @@ import {
 	Box,
 	Button,
 	Stack,
+	Checkbox,
 } from "@chakra-ui/react";
 import { DeleteIcon } from "@chakra-ui/icons";
 
 import StandardInput from "../inputs/StandardInput";
-import TextArea from "../inputs/AreaInput";
+import BadgeInput from "../inputs/BadgeInput";
+import { useContext, useState } from "react";
+import CvContext from "../../utils/cvContext";
+import SummaryInput from "../inputs/SummaryInput";
 
 function DynamicPanel({ ...props }) {
+	const { sharedData, updateSharedData } = useContext(CvContext);
+	const [newId, setNewId] = useState(crypto.randomUUID());
+	const [newData, setNewData] = useState({ id: newId, summary: [] });
+	const [isChecked, setIsChecked] = useState(false);
+	const [newText, setNewText] = useState(" ");
+
+	const handleChange = (event, inputData, id) => {
+		let newTest = { ...newData, id: id !== undefined ? id : newId };
+		let updatedText;
+
+		if (inputData === "current") {
+			updatedText = event.target.checked ? true : false;
+			setIsChecked(updatedText);
+			newTest.to = "Current";
+		}
+		if (inputData !== "current") {
+			updatedText = event.target.value;
+		}
+
+		if (inputData === "summary") {
+			updatedText = event.target.value;
+			setNewText(updatedText.trim());
+			let copy = { ...newData };
+			copy.summary = [...copy.summary, updatedText.trim()];
+			setNewData(copy);
+			handleUpdate(copy);
+			return;
+		}
+
+		newTest[inputData] = updatedText;
+		setNewData(newTest);
+		handleUpdate(newTest);
+	};
+
+	const handleUpdate = (updatedObj) => {
+		let newData = { ...sharedData, test: updatedObj };
+		updateSharedData(newData);
+		console.log(newData.test);
+	};
+
 	return (
 		<Box
 			as='div'
@@ -39,47 +83,60 @@ function DynamicPanel({ ...props }) {
 						<Stack spacing={6}>
 							<StandardInput
 								label='Title'
-								name='dynamic-title'
+								name='title'
 								type='text'
 								placeholder='Title'
+								onChange={() => handleChange(event, "title", newId)}
 							/>
 							<StandardInput
 								hidden={props.link === undefined ? false : true}
 								label='Location'
-								name='dynamic-location'
+								name='location'
 								type='text'
 								placeholder='City  , Country'
+								onChange={() => handleChange(event, "location", newId)}
 							/>
 							<StandardInput
 								hidden={props.link === undefined ? true : false}
 								label='URL'
-								name='dynamic-url'
+								name='url'
 								type='link'
 								placeholder='https://www.example.com'
+								onChange={() => handleChange(event, "url", newId)}
 							/>
 							<StandardInput
 								hidden={props.link === undefined ? true : false}
 								label='Date'
-								name='dynamic-date'
+								name='date'
 								type='date'
+								onChange={() => handleChange(event, "date", newId)}
 							/>
 							<StandardInput
 								hidden={props.link === undefined ? false : true}
 								label='Date from'
-								name='dynamic-dateFrom'
+								name='dateFrom'
 								type='date'
+								onChange={() => handleChange(event, "from", newId)}
 							/>
-							<StandardInput
+							<div style={{ display: isChecked ? "none" : "block" }}>
+								<StandardInput
+									hidden={props.link === undefined ? false : true}
+									label='Date to'
+									name='dateTo'
+									type='date'
+									onChange={() => handleChange(event, "to", newId)}
+								/>
+							</div>
+							<Checkbox
 								hidden={props.link === undefined ? false : true}
-								label='Date to'
-								name='dynamic-dateTo'
-								type='date'
-							/>
-							<TextArea
-								name='dynamic-summary'
-								label='Summary'
-								placeholder='Brief description'
-							/>
+								name='current'
+								isChecked={isChecked}
+								value={isChecked}
+								muid={newId}
+								onChange={() => handleChange(event, "current", newId)}>
+								Current
+							</Checkbox>
+							<SummaryInput label='Summary' name='summary' placeholder='Tasks you worked on' />
 						</Stack>
 					</AccordionPanel>
 				</AccordionItem>

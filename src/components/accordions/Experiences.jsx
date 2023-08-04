@@ -16,8 +16,8 @@ function Experiences() {
 			<h2>
 				<AccordionButton
 					borderRadius='5px'
-					_hover={{ bg: "lightsteelblue", color: "white" }}
-					_expanded={{ bg: "lightsteelblue", color: "white" }}>
+					_hover={{ bg: "#001F3F", color: "white" }}
+					_expanded={{ bg: "#001F3F", color: "white" }}>
 					<Box as='span' flex='1' textAlign='left'>
 						<Text fontWeight='bold'>Experiences </Text>
 					</Box>
@@ -29,7 +29,7 @@ function Experiences() {
 					<AddSectionBtn section='experiences' label='Add Experience' />
 				</Box>
 				<Stack spacing={3}>
-					<DynamicPanel title='Experience 1' children='experience' />
+					<DynamicPanel title='Experience' children='experience' />
 				</Stack>
 			</AccordionPanel>
 		</AccordionItem>
