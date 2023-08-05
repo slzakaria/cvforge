@@ -24,16 +24,17 @@ function SideCv() {
 	}, [sharedData]);
 
 	let jobSkills = cv?.jobSkills.map((skill) => {
+		let item = String(skill).toLocaleUpperCase();
 		return (
 			<Tag key={skill} size='sm' borderRadius='sm' variant='solid' bg={cv.activeColor}>
-				<TagLabel fontSize='0.8em'>{skill}</TagLabel>
+				<TagLabel fontSize='0.9em'>{item}</TagLabel>
 			</Tag>
 		);
 	});
 
 	let softSkills = cv?.softSkills.map((skill) => {
 		return (
-			<li style={{ fontSize: "0.9em" }} key={skill}>
+			<li style={{ fontSize: "0.9em", textTransform: "capitalize" }} key={skill}>
 				{skill}
 			</li>
 		);
@@ -42,7 +43,7 @@ function SideCv() {
 	let langList = cv?.languages.map((item) => {
 		if (cv.languages)
 			return (
-				<li style={{ fontSize: "0.9em" }} key={item}>
+				<li style={{ fontSize: "0.9em", textTransform: "capitalize" }} key={item}>
 					{item}
 				</li>
 			);
@@ -86,10 +87,21 @@ function SideCv() {
 			{/* Contact section */}
 			<Box as='div' padding={4}>
 				<Stack spacing={1}>
-					<Text as='h1' fontSize='1.675em' fontWeight='semibold' wordBreak='break-word'>
+					<Text
+						as='h1'
+						fontSize='1.675em'
+						fontWeight='semibold'
+						wordBreak='break-word'
+						textTransform='capitalize'>
 						{cv.name} {cv.lastName}
 					</Text>
-					<Text as='h1' fontSize='1.6em' fontWeight='bold' wordBreak='break-word' color={cv.activeColor}>
+					<Text
+						as='h1'
+						fontSize='1.6em'
+						textTransform='capitalize'
+						fontWeight='bold'
+						wordBreak='break-word'
+						color={cv.activeColor}>
 						{cv.jobTitle}
 					</Text>
 					<Divider size='md' />

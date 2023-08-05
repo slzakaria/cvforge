@@ -6,25 +6,29 @@ import CvContext from "../../utils/cvContext";
 export default function SummaryInput({ ...props }) {
 	const { sharedData, updateSharedData } = useContext(CvContext);
 	const [newId, setNewId] = useState(props.muid);
-	const [newData, setNewData] = useState({ id: newId, summary: [] });
 	const [newText, setNewText] = useState(" ");
 
-	const handleChange = (event, inputData, id) => {
-		let newTest = { ...newData, id: id !== undefined ? id : newId };
-		let updatedText;
-
-		updatedText = event.target.value;
+	const handleChange = (event, inputData) => {
+		console.log(inputData);
+		const updatedText = event.target.value;
 		setNewText(updatedText.trim());
-		let copy = { ...newData };
-		//copy.summary = [...copy.summary, updatedText.trim()];
-		setNewData(copy);
-		handleUpdate(copy);
 	};
 
-	const handleUpdate = (updatedObj) => {
-		let newData = { ...sharedData, test: updatedObj };
-		updateSharedData(newData);
-		console.log(newData.test);
+	const handleUpdate = (updatedText) => {
+		let targetId = props.mid;
+		let copyObj = { ...sharedData };
+		let workArr = copyObj.work;
+
+		workArr.map((workObj) => {
+			// if (workObj.id === targetId) {
+			// 	workObj.summary.push(updatedText);
+			// } else return workObj;
+			console.warn("workObj", workObj);
+		});
+
+		console.log("work at index 0", workArr[0]);
+		updateSharedData(copyObj);
+		setNewText(" ");
 	};
 
 	return (
@@ -39,9 +43,9 @@ export default function SummaryInput({ ...props }) {
 					placeholder={props.placeholder}
 					name={props.name}
 					value={newText}
-					onChange={(event) => handleChange(event, "current", props.muid)}
+					onChange={(event) => handleChange(event, "summary", props.muid)}
 				/>
-				<Button onClick={() => handleUpdate(newData)} colorScheme='twitter' variant='outline'>
+				<Button onClick={() => handleUpdate()} colorScheme='twitter' variant='outline'>
 					+
 				</Button>
 			</Stack>

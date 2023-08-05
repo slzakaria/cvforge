@@ -2,7 +2,7 @@ import { Box, Text, Stack, Skeleton, Divider } from "@chakra-ui/react";
 import { useEffect, useState, useContext } from "react";
 import CvContext from "../../utils/cvContext";
 
-function MainCv(data) {
+function MainCv() {
 	const { sharedData } = useContext(CvContext);
 	const [mainCv, setMainCv] = useState(sharedData);
 
@@ -11,10 +11,10 @@ function MainCv(data) {
 	}, [sharedData]);
 
 	let workHistory = mainCv?.work.map((item) => {
-		let highpoints = item.summaryArr.map((summary) => {
-			let bullet = summary.toString().trimEnd().trimStart();
+		let highpoints = item?.summary.map((sum) => {
+			let bullet = sum.toString().trimEnd().trimStart();
 			return (
-				<li style={{ fontSize: ".9em", wordBreak: "break-word" }} key={summary}>
+				<li style={{ fontSize: ".9em", wordBreak: "break-word" }} key={sum}>
 					{bullet}
 				</li>
 			);
@@ -107,10 +107,7 @@ function MainCv(data) {
 			<Divider />
 
 			{/* Education section */}
-			<Box
-				padding={2}
-				marginTop='0.5em'
-				style={{ display: isEducation ? "block" : "none" }}>
+			<Box padding={2} marginTop='0.5em' style={{ display: isEducation ? "block" : "none" }}>
 				<Text
 					as='h1'
 					fontSize='1.25em'

@@ -12,7 +12,6 @@ import {
 import { DeleteIcon } from "@chakra-ui/icons";
 
 import StandardInput from "../inputs/StandardInput";
-import BadgeInput from "../inputs/BadgeInput";
 import { useContext, useState } from "react";
 import CvContext from "../../utils/cvContext";
 import SummaryInput from "../inputs/SummaryInput";
@@ -20,7 +19,7 @@ import SummaryInput from "../inputs/SummaryInput";
 function DynamicPanel({ ...props }) {
 	const { sharedData, updateSharedData } = useContext(CvContext);
 	const [newId, setNewId] = useState(crypto.randomUUID());
-	const [newData, setNewData] = useState({ id: newId, summary: [] });
+	const [newData, setNewData] = useState([{ id: newId, summary: [] }]);
 	const [isChecked, setIsChecked] = useState(false);
 	const [newText, setNewText] = useState(" ");
 
@@ -37,15 +36,15 @@ function DynamicPanel({ ...props }) {
 			updatedText = event.target.value;
 		}
 
-		if (inputData === "summary") {
-			updatedText = event.target.value;
-			setNewText(updatedText.trim());
-			let copy = { ...newData };
-			copy.summary = [...copy.summary, updatedText.trim()];
-			setNewData(copy);
-			handleUpdate(copy);
-			return;
-		}
+		// if (inputData === "summary") {
+		// 	updatedText = event.target.value;
+		// 	setNewText(updatedText.trim());
+		// 	let copy = { ...newData };
+		// 	copy.summary = [...copy.summary, updatedText.trim()];
+		// 	setNewData(copy);
+		// 	handleUpdate(copy);
+		// 	return;
+		// }
 
 		newTest[inputData] = updatedText;
 		setNewData(newTest);
@@ -53,9 +52,12 @@ function DynamicPanel({ ...props }) {
 	};
 
 	const handleUpdate = (updatedObj) => {
-		let newData = { ...sharedData, test: updatedObj };
-		updateSharedData(newData);
-		console.log(newData.test);
+		let copyData = { ...sharedData };
+		let newData = copyData.work.summary;
+		// newData.push(updatedObj);
+		// setNewData(newData);
+		// updateSharedData(copyData);
+		console.log("works", newData);
 	};
 
 	return (
@@ -136,7 +138,13 @@ function DynamicPanel({ ...props }) {
 								onChange={() => handleChange(event, "current", newId)}>
 								Current
 							</Checkbox>
-							<SummaryInput label='Summary' name='summary' placeholder='Tasks you worked on' />
+							<SummaryInput
+								label='Summary'
+								name='summary'
+								placeholder='Tasks you worked on'
+								mid={newId}
+								onChange={() => handleChange(event, "summary", newId)}
+							/>
 						</Stack>
 					</AccordionPanel>
 				</AccordionItem>

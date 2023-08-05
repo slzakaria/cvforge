@@ -52,7 +52,7 @@ function CvProvider({ children }) {
 				from: "date",
 				to: "date",
 				current: true,
-				summaryArr: ["task 1", "task 2", "task 3", "task 4"],
+				summary: ["task 1", "task 2", "task 3", "task 4"],
 			},
 			{
 				title: "Company 2 - Job title",
@@ -60,7 +60,7 @@ function CvProvider({ children }) {
 				from: "date",
 				to: "date",
 				current: true,
-				summaryArr: ["task 1", "task 2", "task 3", "task 4"],
+				summary: ["task 1", "task 2", "task 3", "task 4"],
 			},
 		],
 		projects: [
@@ -76,7 +76,7 @@ function CvProvider({ children }) {
 		],
 		displayEducation: true,
 		displayProjects: true,
-		//activeColor: "#1E40AF",
+		activeColor: "#050505",
 	};
 	const [cvData, setCvData] = useLocalStorage("cvData", initialData);
 	const [sharedData, setSharedData] = useState(cvData);
