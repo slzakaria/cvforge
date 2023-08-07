@@ -5,7 +5,7 @@ import CvProvider from "./components/ui/cvProvider";
 
 function App() {
 	return (
-		<Box>
+		<>
 			{/** put context provider here */}
 			<CvProvider>
 				<Box minHeight='100dvh' display='flex' justifyContent='normal' as='div'>
@@ -17,7 +17,7 @@ function App() {
 					</Box>
 				</Box>
 			</CvProvider>
-		</Box>
+		</>
 	);
 }
 

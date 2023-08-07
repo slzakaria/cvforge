@@ -17,19 +17,19 @@ function CvProvider({ children }) {
 		languages: [],
 		socials: [
 			{
-				name: "Linkedin",
+				name: "linkedin",
 				link: "",
 			},
 			{
-				name: "Twitter",
+				name: "twitter",
 				link: "",
 			},
 			{
-				name: "Github",
+				name: "github",
 				link: "",
 			},
 			{
-				name: "Website",
+				name: "website",
 				link: "",
 			},
 		],
@@ -74,7 +74,7 @@ function CvProvider({ children }) {
 				summaryArr: [""],
 			},
 		],
-		displayEducation: true,
+		displayEducation: false,
 		displayProjects: true,
 		activeColor: "#050505",
 	};

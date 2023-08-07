@@ -1,11 +1,4 @@
-import {
-	Box,
-	AccordionItem,
-	AccordionButton,
-	AccordionPanel,
-	AccordionIcon,
-	Text,
-} from "@chakra-ui/react";
+import { Box, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon, Text } from "@chakra-ui/react";
 import SocialsPanel from "./SocialsPanel";
 
 function Socials() {

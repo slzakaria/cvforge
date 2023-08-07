@@ -10,7 +10,6 @@ function SocialsPanel({ ...props }) {
 	const handleChange = (event, inputData) => {
 		const updatedText = event.target.value;
 		setNewText(updatedText);
-		console.log(updatedText);
 		handleUpdate(updatedText, inputData);
 	};
 
@@ -25,25 +24,20 @@ function SocialsPanel({ ...props }) {
 			<StandardInput
 				label='LinkedIn'
 				name='LinkedIn'
-				type='link'
+				type='url'
 				onChange={(event) => handleChange(event, "0")}
 			/>
 			<StandardInput
 				label='Twitter'
 				name='twitter'
-				type='link'
+				type='url'
 				onChange={(event) => handleChange(event, "1")}
 			/>
-			<StandardInput
-				label='Github'
-				name='github'
-				type='link'
-				onChange={(event) => handleChange(event, "2")}
-			/>
+			<StandardInput label='Github' name='github' type='url' onChange={(event) => handleChange(event, "2")} />
 			<StandardInput
 				label='Website'
 				name='website'
-				type='link'
+				type='url'
 				onChange={(event) => handleChange(event, "3")}
 			/>
 		</Stack>

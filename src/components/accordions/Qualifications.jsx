@@ -6,6 +6,7 @@ import {
 	AccordionIcon,
 	Text,
 	Stack,
+	Select,
 } from "@chakra-ui/react";
 import BadgeInput from "../inputs/BadgeInput";
 
@@ -35,7 +36,11 @@ function Qualifications() {
 						name='softSkills'
 						placeholder='Teamplayer, fast learner , problem solver ...'
 					/>
-					<BadgeInput label='Languages' name='languages' placeholder='English, French, Spanish ...' />
+					<BadgeInput
+						label='Languages'
+						name='languages'
+						placeholder='English - native , French - basic, Spanish ...'
+					/>
 				</Stack>
 			</AccordionPanel>
 		</AccordionItem>

@@ -52,21 +52,38 @@ function SideCv() {
 
 	let socials = cv?.socials.map((item) => {
 		let icon = null;
-		if (item.name == "Twitter") {
+		if (item.name == "twitter") {
 			icon = LiaTwitter;
-		} else if (item.name == "Github") {
+		} else if (item.name == "github") {
 			icon = LiaGithub;
-		} else if (item.name == "Linkedin") {
+		} else if (item.name == "linkedin") {
 			icon = LiaLinkedinIn;
-		} else if (item.name == "Website") {
+		} else if (item.name == "website") {
 			icon = LiaSafari;
 		}
+
+		function capitalize(word) {
+			return word.charAt(0).toUpperCase() + word.slice(1);
+		}
+
 		return (
 			<ListItem key={item.name}>
 				<ListIcon as={icon} color={cv.activeColor} />
-				<a href={item.link} style={{ marginRight: "0.5em", fontSize: "0.9em" }}>
-					{item.name}
-				</a>
+				{item.name != "website" ? (
+					<a
+						target='_blank'
+						href={`https://${item.name}.com/${item.link}`}
+						style={{ marginRight: "0.5em", fontSize: "0.9em" }}>
+						{capitalize(item.name)}
+					</a>
+				) : (
+					<a
+						href={`https://${item.link}`}
+						target='_blank'
+						style={{ marginRight: "0.5em", fontSize: "0.9em" }}>
+						{capitalize(item.name)}
+					</a>
+				)}
 			</ListItem>
 		);
 	});

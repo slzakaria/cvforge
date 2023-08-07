@@ -47,7 +47,7 @@ function MainCv() {
 		);
 	});
 
-	let isEducation = mainCv?.education.length > 0;
+	let isEducation = mainCv.displayEducation;
 
 	if (mainCv === null)
 		return (
@@ -72,7 +72,7 @@ function MainCv() {
 					color={mainCv.activeColor}>
 					About me
 				</Text>
-				<Text as='p' fontSize='1em' wordBreak='break-word' marginTop='1em'>
+				<Text as='p' fontSize='1em' wordBreak='break-word' marginTop='1em' whiteSpace='pre-line'>
 					{mainCv.aboutMe}
 				</Text>
 			</Box>
