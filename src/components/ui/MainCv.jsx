@@ -48,6 +48,7 @@ function MainCv() {
 	});
 
 	let isEducation = mainCv.displayEducation;
+	let isProjects = mainCv.displayProjects;
 
 	if (mainCv === null)
 		return (
@@ -93,7 +94,7 @@ function MainCv() {
 			<Divider />
 
 			{/* Projects section */}
-			<Box padding={2} marginTop='0.5em'>
+			<Box padding={2} marginTop='0.5em' style={{ display: isProjects ? "block" : "none" }}>
 				<Text
 					as='h1'
 					fontSize='1.25em'
@@ -102,8 +103,8 @@ function MainCv() {
 					color={mainCv.activeColor}>
 					Projects
 				</Text>
+				<Stack spacing={2}>{projects}</Stack>
 			</Box>
-			<Stack spacing={2}>{projects}</Stack>
 			<Divider />
 
 			{/* Education section */}
@@ -116,8 +117,8 @@ function MainCv() {
 					color={mainCv.activeColor}>
 					Education
 				</Text>
+				<Stack spacing={2}></Stack>
 			</Box>
-			<Stack spacing={2}></Stack>
 		</>
 	);
 }

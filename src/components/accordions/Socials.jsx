@@ -7,8 +7,8 @@ function Socials() {
 			<h2>
 				<AccordionButton
 					borderRadius='5px'
-					_hover={{ bg: "lightsteelblue", color: "white" }}
-					_expanded={{ bg: "lightsteelblue", color: "white" }}>
+					_hover={{ bg: "#001F3F", color: "white" }}
+					_expanded={{ bg: "#001F3F", color: "white" }}>
 					<Box as='span' flex='1' textAlign='left'>
 						<Text fontWeight='bold'>Socials</Text>
 					</Box>

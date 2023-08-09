@@ -24,9 +24,7 @@ function Experiences() {
 				</AccordionButton>
 			</h2>
 			<AccordionPanel pb={2}>
-				<Stack spacing={3}>
-					<DynamicPanel title='Experience' children='experience' />
-				</Stack>
+				<DynamicPanel title='Experience' children='experience' />
 			</AccordionPanel>
 		</AccordionItem>
 	);

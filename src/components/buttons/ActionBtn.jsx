@@ -9,7 +9,7 @@ function ActionButtons() {
 	}, 5000);
 
 	return (
-		<Stack direction='column' spacing={4} align='center'>
+		<Stack direction='column' spacing={4} align='center' marginTop='.5em'>
 			<Button
 				width='90%'
 				isLoading={isLoading}

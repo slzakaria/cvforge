@@ -27,7 +27,7 @@ function ThemeButtons() {
 	};
 
 	return (
-		<ButtonGroup variant='outline' spacing='4' margin='1em'>
+		<ButtonGroup variant='outline' spacing='2' margin='.5em'>
 			<Button
 				onClick={() => {
 					handleChange("black");

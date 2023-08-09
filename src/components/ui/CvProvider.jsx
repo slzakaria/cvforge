@@ -33,52 +33,14 @@ function CvProvider({ children }) {
 				link: "",
 			},
 		],
-		education: [
-			{
-				title: "Education title (optional)",
-				location: "",
-				from: "2021-10-01",
-				to: "2021-10-31",
-				current: false,
-				summary: "",
-				summaryArr: [""],
-			},
-		],
-		work: [
-			{
-				id: 1,
-				title: "Company 1 - Job title",
-				location: "Company location - Country",
-				from: "date",
-				to: "date",
-				current: true,
-				summary: [{ id: 1, task: "test" }],
-			},
-			{
-				id: 4,
-				title: "Company 2 - Job title",
-				location: "Company location - Country",
-				from: "date",
-				to: "date",
-				current: true,
-				summary: [{ id: 3, task: "test" }],
-			},
-		],
-		projects: [
-			{
-				title: "Project title (optional)",
-				location: "",
-				from: "2021-10-01",
-				to: "2021-10-31",
-				current: false,
-				summary: "",
-				summaryArr: [""],
-			},
-		],
+		education: [],
+		work: [],
+		projects: [],
 		displayEducation: false,
-		displayProjects: true,
+		displayProjects: false,
 		activeColor: "#050505",
 	};
+
 	const [cvData, setCvData] = useLocalStorage("cvData", initialData);
 	const [sharedData, setSharedData] = useState(cvData);
 
