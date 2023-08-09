@@ -52,15 +52,16 @@ function CvProvider({ children }) {
 				from: "date",
 				to: "date",
 				current: true,
-				summary: ["task 1", "task 2", "task 3", "task 4"],
+				summary: [{ id: 1, task: "test" }],
 			},
 			{
+				id: 4,
 				title: "Company 2 - Job title",
 				location: "Company location - Country",
 				from: "date",
 				to: "date",
 				current: true,
-				summary: ["task 1", "task 2", "task 3", "task 4"],
+				summary: [{ id: 3, task: "test" }],
 			},
 		],
 		projects: [

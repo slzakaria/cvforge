@@ -9,7 +9,7 @@ function StandardInput({ ...props }) {
 			<Input
 				_placeholder={{ opacity: 1, color: "#003366" }}
 				focusBorderColor='blue.500'
-				variant='flushed'
+				variant={props.variant || "outline"}
 				flexGrow='1'
 				id={props.id}
 				width={props.width || "100%"}

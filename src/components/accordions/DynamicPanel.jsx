@@ -5,59 +5,90 @@ import {
 	AccordionPanel,
 	AccordionIcon,
 	Box,
-	Button,
 	Stack,
 	Checkbox,
+	Button,
 } from "@chakra-ui/react";
-import { DeleteIcon } from "@chakra-ui/icons";
 
 import StandardInput from "../inputs/StandardInput";
+import AddSectionBtn from "../buttons/AddSectionBtn";
 import { useContext, useState } from "react";
 import CvContext from "../../utils/cvContext";
 import SummaryInput from "../inputs/SummaryInput";
 
 function DynamicPanel({ ...props }) {
 	const { sharedData, updateSharedData } = useContext(CvContext);
-	const [newId, setNewId] = useState(crypto.randomUUID());
-	const [newData, setNewData] = useState([{ id: newId, summary: [] }]);
+	const [localData, setLocalData] = useState({ ...sharedData });
+	const [newId, setNewId] = useState(crypto.randomUUID().slice(0, 13));
+	const [newData, setNewData] = useState({ id: newId, summary: [] });
 	const [isChecked, setIsChecked] = useState(false);
-	const [newText, setNewText] = useState(" ");
+	const [newTask, setNewTask] = useState(" ");
 
 	const handleChange = (event, inputData, id) => {
-		let newTest = { ...newData, id: id !== undefined ? id : newId };
+		let newObj = { ...newData, id: id !== undefined ? id : newId };
 		let updatedText;
 
 		if (inputData === "current") {
 			updatedText = event.target.checked ? true : false;
 			setIsChecked(updatedText);
-			newTest.to = "Current";
+			newObj.to = "Current";
+			newObj[inputData] = updatedText;
+			setNewData(newObj);
+			return;
 		}
 		if (inputData !== "current") {
 			updatedText = event.target.value;
+			newObj[inputData] = updatedText;
+			setNewData(newObj);
+			return;
 		}
-
-		// if (inputData === "summary") {
-		// 	updatedText = event.target.value;
-		// 	setNewText(updatedText.trim());
-		// 	let copy = { ...newData };
-		// 	copy.summary = [...copy.summary, updatedText.trim()];
-		// 	setNewData(copy);
-		// 	handleUpdate(copy);
-		// 	return;
-		// }
-
-		newTest[inputData] = updatedText;
-		setNewData(newTest);
-		handleUpdate(newTest);
 	};
 
-	const handleUpdate = (updatedObj) => {
-		let copyData = { ...sharedData };
-		let newData = copyData.work.summary;
-		// newData.push(updatedObj);
-		// setNewData(newData);
-		// updateSharedData(copyData);
-		console.log("works", newData);
+	const updateArray = (event) => {
+		const updatedInput = event.target.value;
+		setNewTask(updatedInput);
+	};
+
+	function removeDuplicateObjectsLast(arr, idProperty) {
+		const seenIds = {}; // Object to track encountered IDs
+		const reversedArr = arr.slice().reverse(); // Create a reversed copy of the array
+		return reversedArr
+			.filter((obj) => {
+				if (!seenIds[obj[idProperty]]) {
+					seenIds[obj[idProperty]] = true;
+					return true;
+				}
+				return false;
+			})
+			.reverse(); // Reverse the result again to get the original order
+	}
+
+	const handleAddTask = (task) => {
+		let newTask = {
+			id: crypto.randomUUID().slice(0, 8),
+			task: task,
+		};
+
+		let newWork = { ...newData };
+		let updatedWork = { ...newWork, summary: [...newWork.summary, newTask] };
+		setNewData(updatedWork);
+		handleUpdateLocal(updatedWork);
+		setNewTask(" ");
+	};
+
+	const handleUpdateLocal = (data) => {
+		console.log("Final work", data);
+		let cleanData = { ...data, summary: removeDuplicateObjectsLast(data.summary, "id") };
+		let local = { ...localData, work: [...localData.work, cleanData] };
+		const cleanLocal = { ...local, work: removeDuplicateObjectsLast(local.work, "id") };
+		console.log("Local data", local);
+		console.log("Clean local data", cleanLocal);
+		setLocalData(cleanLocal);
+	};
+
+	const handleUpdateShared = () => {
+		updateSharedData(localData);
+		setNewId(crypto.randomUUID().slice(0, 13));
 	};
 
 	return (
@@ -69,10 +100,6 @@ function DynamicPanel({ ...props }) {
 			justifyContent='space-between'
 			alignItems='center'
 			marginTop='1em'>
-			<Button bg='red' color='white' size='sm' marginRight='0.5em'>
-				{" "}
-				<DeleteIcon />{" "}
-			</Button>
 			<Accordion allowToggle flex='1'>
 				<AccordionItem>
 					<h2>
@@ -143,9 +170,25 @@ function DynamicPanel({ ...props }) {
 								name='summary'
 								placeholder='Tasks you worked on'
 								mid={newId}
-								onChange={() => handleChange(event, "summary", newId)}
+								value={newTask}
+								onChange={() => updateArray(event)}
 							/>
+							<Button
+								colorScheme='twitter'
+								variant='outline'
+								h='1.8rem'
+								size='md'
+								onClick={() => handleAddTask(newTask)}>
+								Add task
+							</Button>
 						</Stack>
+						<AddSectionBtn
+							marginTop='1em'
+							variant='outline'
+							section='experiences'
+							label='Save Experience'
+							onClick={() => handleUpdateShared()}
+						/>
 					</AccordionPanel>
 				</AccordionItem>
 			</Accordion>

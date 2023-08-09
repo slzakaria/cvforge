@@ -7,7 +7,6 @@ import {
 	Text,
 	Stack,
 } from "@chakra-ui/react";
-import AddSectionBtn from "../buttons/AddSectionBtn";
 import DynamicPanel from "./DynamicPanel";
 
 function Experiences() {
@@ -25,9 +24,6 @@ function Experiences() {
 				</AccordionButton>
 			</h2>
 			<AccordionPanel pb={2}>
-				<Box as='div' marginTop='1em'>
-					<AddSectionBtn section='experiences' label='Add Experience' />
-				</Box>
 				<Stack spacing={3}>
 					<DynamicPanel title='Experience' children='experience' />
 				</Stack>

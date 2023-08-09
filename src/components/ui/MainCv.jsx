@@ -5,6 +5,7 @@ import CvContext from "../../utils/cvContext";
 function MainCv() {
 	const { sharedData } = useContext(CvContext);
 	const [mainCv, setMainCv] = useState(sharedData);
+	const [newId, setNewId] = useState(crypto.randomUUID().slice(0, 14));
 
 	useEffect(() => {
 		setMainCv(sharedData);
@@ -12,15 +13,14 @@ function MainCv() {
 
 	let workHistory = mainCv?.work.map((item) => {
 		let highpoints = item?.summary.map((sum) => {
-			let bullet = sum.toString().trimEnd().trimStart();
 			return (
-				<li style={{ fontSize: ".9em", wordBreak: "break-word" }} key={sum}>
-					{bullet}
+				<li style={{ fontSize: ".9em", wordBreak: "break-word" }} key={sum.id}>
+					{sum.task}
 				</li>
 			);
 		});
 		return (
-			<Box as='div' padding={2} key={item.title}>
+			<Box as='div' padding={2} key={item.id}>
 				<Text as='h2' fontSize='1em' fontWeight='semibold'>
 					<u>{item.title}</u>
 				</Text>
