@@ -12,7 +12,13 @@ function App() {
 					<Box padding='1em' width='[35dvw,40dvw]' bg='#F8FBFD' boxShadow='md'>
 						<SettingsPanel style={{ margin: "0 auto" }} />
 					</Box>
-					<Box bg='white' padding='2em' width='auto' margin='0 auto' overflow='hidden' id='templatePanel'>
+					<Box
+						bg='white'
+						padding='2em'
+						width='auto'
+						margin='0 auto'
+						overflow='hidden'
+						id='templatePanel'>
 						<TemplatePanel />
 					</Box>
 				</Box>

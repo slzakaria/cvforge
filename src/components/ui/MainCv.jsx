@@ -5,7 +5,6 @@ import CvContext from "../../utils/cvContext";
 function MainCv() {
 	const { sharedData } = useContext(CvContext);
 	const [mainCv, setMainCv] = useState(sharedData);
-	const [newId, setNewId] = useState(crypto.randomUUID().slice(0, 14));
 
 	useEffect(() => {
 		setMainCv(sharedData);

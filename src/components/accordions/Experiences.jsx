@@ -5,7 +5,6 @@ import {
 	AccordionPanel,
 	AccordionIcon,
 	Text,
-	Stack,
 } from "@chakra-ui/react";
 import DynamicPanel from "./DynamicPanel";
 

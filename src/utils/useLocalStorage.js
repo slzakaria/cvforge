@@ -9,15 +9,15 @@ export default function useLocalStorage(key, initialValue) {
 				const item = window.localStorage.getItem(key);
 				return item ? JSON.parse(item) : initialValue;
 			}
-			return typeof initialValue === "function" ? initialValue() : initialValue
+			return typeof initialValue === "function" ? initialValue() : initialValue;
 		} catch (error) {
 			console.error(`Error reading from local storage: ${error}`);
-			return typeof initialValue === "function" ? initialValue() : initialValue
+			return typeof initialValue === "function" ? initialValue() : initialValue;
 		}
 	});
 
 	useEffect(() => {
-		if (storedValue === undefined) return window.localStorage.removeItem(key)
+		if (storedValue === undefined) return window.localStorage.removeItem(key);
 		if (isLocalStorageAvailable && storedValue !== undefined) {
 			try {
 				window.localStorage.setItem(key, JSON.stringify(storedValue));

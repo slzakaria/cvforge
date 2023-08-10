@@ -6,7 +6,6 @@ import {
 	AccordionIcon,
 	Text,
 	Stack,
-	Select,
 } from "@chakra-ui/react";
 import BadgeInput from "../inputs/BadgeInput";
 

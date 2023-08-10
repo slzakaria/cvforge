@@ -1,14 +1,4 @@
-import {
-	Accordion,
-	AccordionItem,
-	AccordionButton,
-	AccordionPanel,
-	AccordionIcon,
-	Box,
-	Stack,
-	Checkbox,
-	Button,
-} from "@chakra-ui/react";
+import { Box, Stack, Checkbox, Button } from "@chakra-ui/react";
 
 import StandardInput from "../inputs/StandardInput";
 import AddSectionBtn from "../buttons/AddSectionBtn";

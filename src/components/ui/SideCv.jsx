@@ -67,9 +67,9 @@ function SideCv() {
 		}
 
 		return (
-			<ListItem key={item.name}>
+			<ListItem key={item.name} style={{ display: item.link.length > 0 ? "block" : "none" }}>
 				<ListIcon as={icon} color={cv.activeColor} />
-				{item.name != "website" ? (
+				{item.name != "website" && item.name.length > 0 ? (
 					<a
 						target='_blank'
 						href={`https://${item.name}.com/${item.link}`}

@@ -33,7 +33,12 @@ function SocialsPanel({ ...props }) {
 				type='url'
 				onChange={(event) => handleChange(event, "1")}
 			/>
-			<StandardInput label='Github' name='github' type='url' onChange={(event) => handleChange(event, "2")} />
+			<StandardInput
+				label='Github'
+				name='github'
+				type='url'
+				onChange={(event) => handleChange(event, "2")}
+			/>
 			<StandardInput
 				label='Website'
 				name='website'
