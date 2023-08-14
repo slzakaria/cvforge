@@ -6,7 +6,7 @@ import {
 	AccordionIcon,
 	Text,
 } from "@chakra-ui/react";
-import DynamicPanel from "./DynamicPanel";
+import WorkPanel from "../panels/WorkPanel";
 
 function Experiences() {
 	return (
@@ -23,7 +23,7 @@ function Experiences() {
 				</AccordionButton>
 			</h2>
 			<AccordionPanel pb={2}>
-				<DynamicPanel title='Experience' children='experience' />
+				<WorkPanel title='experience' children='experience' />
 			</AccordionPanel>
 		</AccordionItem>
 	);

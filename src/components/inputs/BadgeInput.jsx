@@ -1,7 +1,7 @@
-import StandardInput from "./StandardInput";
 import { Button, Stack, Box, FormLabel } from "@chakra-ui/react";
 import { useContext, useState } from "react";
 import CvContext from "../../utils/cvContext";
+import StandardInput from "./StandardInput";
 
 export default function BadgeInput({ ...props }) {
 	const { sharedData, updateSharedData } = useContext(CvContext);
@@ -36,7 +36,10 @@ export default function BadgeInput({ ...props }) {
 					value={newText}
 					onChange={(event) => handleChange(event, props.name)}
 				/>
-				<Button onClick={() => handleUpdate(newText, props.name)} colorScheme='twitter' variant='outline'>
+				<Button
+					onClick={() => handleUpdate(newText, props.name)}
+					colorScheme='twitter'
+					variant='outline'>
 					+
 				</Button>
 			</Stack>

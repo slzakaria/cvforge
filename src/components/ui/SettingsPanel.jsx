@@ -1,6 +1,6 @@
 import { Box, Stack, Text } from "@chakra-ui/react";
-import ThemeButtons from "../buttons/ThemeBtn";
 import OptionsContainer from "./OptionsContainer";
+import ThemeButtons from "../buttons/ThemeBtn";
 import ActionButtons from "../buttons/ActionBtn";
 
 function SettingsPanel() {

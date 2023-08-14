@@ -7,7 +7,7 @@ import {
 	Text,
 	Stack,
 } from "@chakra-ui/react";
-import DynamicPanel from "./DynamicPanel";
+import ProjectPanel from "../panels/ProjectPanel";
 import ToggleInputs from "../inputs/ToggleInputs";
 
 function Projects() {
@@ -27,7 +27,7 @@ function Projects() {
 			<AccordionPanel pb={4}>
 				<Stack spacing={3}>
 					<ToggleInputs name='projects' value='projects' />
-					<DynamicPanel title='Project 1 1' children='Project 1' link='test' />
+					<ProjectPanel title='Project' children='project' link='test' />
 				</Stack>
 			</AccordionPanel>
 		</AccordionItem>

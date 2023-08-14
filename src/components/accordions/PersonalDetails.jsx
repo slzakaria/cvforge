@@ -7,10 +7,10 @@ import {
 	Text,
 	Stack,
 } from "@chakra-ui/react";
-import StandardInput from "../inputs/StandardInput";
-import TextArea from "../inputs/AreaInput";
 import { useContext, useState } from "react";
 import CvContext from "../../utils/cvContext";
+import StandardInput from "../inputs/StandardInput";
+import TextArea from "../inputs/AreaInput";
 
 function PersonalDetail() {
 	const { sharedData, updateSharedData } = useContext(CvContext);

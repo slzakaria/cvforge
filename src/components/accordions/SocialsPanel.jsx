@@ -1,7 +1,7 @@
 import { Stack } from "@chakra-ui/react";
-import StandardInput from "../inputs/StandardInput";
 import { useContext, useState } from "react";
 import CvContext from "../../utils/cvContext";
+import StandardInput from "../inputs/StandardInput";
 
 function SocialsPanel({ ...props }) {
 	const { sharedData, updateSharedData } = useContext(CvContext);

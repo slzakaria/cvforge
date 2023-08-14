@@ -1,12 +1,12 @@
 import { Box, Stack, Checkbox, Button } from "@chakra-ui/react";
 
-import StandardInput from "../inputs/StandardInput";
-import AddSectionBtn from "../buttons/AddSectionBtn";
 import { useContext, useState } from "react";
 import CvContext from "../../utils/cvContext";
+import StandardInput from "../inputs/StandardInput";
 import SummaryInput from "../inputs/SummaryInput";
+import AddSectionBtn from "../buttons/AddSectionBtn";
 
-function DynamicPanel({ ...props }) {
+function WorkPanel({ ...props }) {
 	const { sharedData, updateSharedData } = useContext(CvContext);
 	const [localData, setLocalData] = useState({ ...sharedData });
 	const [newId, setNewId] = useState(crypto.randomUUID().slice(0, 13));
@@ -14,15 +14,17 @@ function DynamicPanel({ ...props }) {
 	const [isChecked, setIsChecked] = useState(false);
 	const [newTask, setNewTask] = useState(" ");
 
+	const workTasks = props.title === "experience" ? true : false;
+
 	const handleChange = (event, inputData, id) => {
 		let newObj = { ...newData, id: id !== undefined ? id : newId };
 		let updatedText;
 
 		if (inputData === "current") {
-			updatedText = event.target.checked ? true : false;
-			setIsChecked(updatedText);
+			updatedChecked = event.target.checked ? true : false;
+			setIsChecked(updatedChecked);
 			newObj.to = "Current";
-			newObj[inputData] = updatedText;
+			newObj[inputData] = updatedChecked;
 			setNewData(newObj);
 			return;
 		}
@@ -50,7 +52,7 @@ function DynamicPanel({ ...props }) {
 				}
 				return false;
 			})
-			.reverse(); // Reverse the result again to get the original order
+			.reverse();
 	}
 
 	const handleAddTask = (task) => {
@@ -64,15 +66,13 @@ function DynamicPanel({ ...props }) {
 		setNewData(updatedWork);
 		handleUpdateLocal(updatedWork);
 		setNewTask(" ");
+		// add a toast notification here as ui feedback
 	};
 
 	const handleUpdateLocal = (data) => {
-		console.log("Final work", data);
 		let cleanData = { ...data, summary: removeDuplicateObjectsLast(data.summary, "id") };
 		let local = { ...localData, work: [...localData.work, cleanData] };
 		const cleanLocal = { ...local, work: removeDuplicateObjectsLast(local.work, "id") };
-		console.log("Local data", local);
-		console.log("Clean local data", cleanLocal);
 		setLocalData(cleanLocal);
 	};
 
@@ -147,14 +147,17 @@ function DynamicPanel({ ...props }) {
 					Current
 				</Checkbox>
 				<SummaryInput
+					hidden={workTasks ? false : true}
 					label='Summary'
 					name='summary'
 					placeholder='Tasks you worked on'
 					mid={newId}
+					hide={workTasks.toString()}
 					value={newTask}
 					onChange={() => updateArray(event)}
 				/>
 				<Button
+					hidden={workTasks ? false : true}
 					colorScheme='twitter'
 					variant='outline'
 					h='1.8rem'
@@ -163,9 +166,14 @@ function DynamicPanel({ ...props }) {
 					Add task
 				</Button>
 			</Stack>
-			<AddSectionBtn marginTop='1em' variant='outline' label='Save' onClick={() => handleUpdateShared()} />
+			<AddSectionBtn
+				marginTop='1em'
+				variant='outline'
+				label='Save'
+				onClick={() => handleUpdateShared()}
+			/>
 		</Box>
 	);
 }
 
-export default DynamicPanel;
+export default WorkPanel;

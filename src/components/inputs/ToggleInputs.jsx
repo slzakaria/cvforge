@@ -1,6 +1,6 @@
+import { Switch, FormControl, FormLabel } from "@chakra-ui/react";
 import { useContext, useState } from "react";
 import CvContext from "../../utils/cvContext";
-import { Switch, FormControl, FormLabel } from "@chakra-ui/react";
 
 function ToggleInputs({ ...props }) {
 	const { sharedData, updateSharedData } = useContext(CvContext);
@@ -30,10 +30,9 @@ function ToggleInputs({ ...props }) {
 
 	return (
 		<>
+			Show {props.name} section ?
 			<FormControl display='flex' alignItems='center'>
-				<FormLabel htmlFor={props.name} mb='0'>
-					Show {props.name} section ?
-				</FormLabel>
+				<FormLabel htmlFor={props.name} mb='0'></FormLabel>
 				<Switch
 					id={props.name}
 					value={props.name === "education" ? isEducation : isProjects}
