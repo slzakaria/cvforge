@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import CvProvider from "./components/ui/cvProvider";
+import CvProvider from "./components/ui/CvProvider";
 import SettingsPanel from "./components/ui/SettingsPanel";
 import TemplatePanel from "./components/ui/TemplatePanel";
 

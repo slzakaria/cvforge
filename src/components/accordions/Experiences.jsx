@@ -23,7 +23,7 @@ function Experiences() {
 				</AccordionButton>
 			</h2>
 			<AccordionPanel pb={2}>
-				<WorkPanel title='experience' children='experience' />
+				<WorkPanel title='experience' />
 			</AccordionPanel>
 		</AccordionItem>
 	);

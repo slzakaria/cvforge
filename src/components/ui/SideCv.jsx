@@ -72,6 +72,7 @@ function SideCv() {
 				{item.name != "website" && item.name.length > 0 ? (
 					<a
 						target='_blank'
+						rel='noreferrer'
 						href={`https://${item.name}.com/${item.link}`}
 						style={{ marginRight: "0.5em", fontSize: "0.9em" }}>
 						{capitalize(item.name)}
@@ -80,6 +81,7 @@ function SideCv() {
 					<a
 						href={`https://${item.link}`}
 						target='_blank'
+						rel='noreferrer'
 						style={{ marginRight: "0.5em", fontSize: "0.9em" }}>
 						{capitalize(item.name)}
 					</a>
@@ -178,7 +180,13 @@ function SideCv() {
 					<Text fontSize='1em' fontWeight='bold'>
 						Languagues
 					</Text>
-					<Stack as='ul' id='languages_section' spacing='.2em' marginTop='0.2em' padding={2} wrap='wrap'>
+					<Stack
+						as='ul'
+						id='languages_section'
+						spacing='.2em'
+						marginTop='0.2em'
+						padding={2}
+						wrap='wrap'>
 						{langList}
 					</Stack>
 				</Stack>

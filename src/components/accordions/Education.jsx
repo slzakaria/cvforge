@@ -27,7 +27,7 @@ function Education() {
 			<AccordionPanel pb={2}>
 				<Stack spacing={3}>
 					<ToggleInputs name='education' value='education' />
-					<EducationPanel title='Education' children='education' />
+					<EducationPanel title='Education' />
 				</Stack>
 			</AccordionPanel>
 		</AccordionItem>

@@ -40,7 +40,7 @@ function MainCv() {
 					<u>{item.title}</u> -- {item.date}
 				</Text>
 				<div>
-					<a href={`https://${item.url}`} target='_blank'>
+					<a href={`https://${item.url}`} rel='noreferrer' target='_blank'>
 						{" "}
 						{item.title}
 					</a>

@@ -27,7 +27,7 @@ function Projects() {
 			<AccordionPanel pb={4}>
 				<Stack spacing={3}>
 					<ToggleInputs name='projects' value='projects' />
-					<ProjectPanel title='Project' children='project' link='test' />
+					<ProjectPanel title='Project' />
 				</Stack>
 			</AccordionPanel>
 		</AccordionItem>
