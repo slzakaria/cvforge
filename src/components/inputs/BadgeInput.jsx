@@ -8,7 +8,6 @@ export default function BadgeInput({ ...props }) {
 	const [newText, setNewText] = useState(" ");
 
 	const handleChange = (event, inputData) => {
-		console.log(inputData);
 		const updatedText = event.target.value;
 		setNewText(updatedText);
 	};
