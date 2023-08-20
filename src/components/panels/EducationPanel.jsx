@@ -1,20 +1,15 @@
-import { Box, Stack, Checkbox, Button } from "@chakra-ui/react";
-
+import { Box, Stack, Checkbox } from "@chakra-ui/react";
 import { useContext, useState } from "react";
 import CvContext from "../../utils/cvContext";
 import StandardInput from "../inputs/StandardInput";
-import SummaryInput from "../inputs/SummaryInput";
 import AddSectionBtn from "../buttons/AddSectionBtn";
 
 function EducationPanel({ ...props }) {
 	const { sharedData, updateSharedData } = useContext(CvContext);
 	const [localData, setLocalData] = useState({ ...sharedData });
 	const [newId, setNewId] = useState(crypto.randomUUID().slice(0, 13));
-	const [newData, setNewData] = useState({ id: newId, summary: [] });
+	const [newData, setNewData] = useState({ id: newId });
 	const [isChecked, setIsChecked] = useState(false);
-	const [newTask, setNewTask] = useState(" ");
-
-	const workTasks = props.title === "experience" ? true : false;
 
 	const handleChange = (event, inputData, id) => {
 		let newObj = { ...newData, id: id !== undefined ? id : newId };
@@ -28,17 +23,13 @@ function EducationPanel({ ...props }) {
 			setNewData(newObj);
 			return;
 		}
+
 		if (inputData !== "current") {
 			updatedText = event.target.value;
 			newObj[inputData] = updatedText;
 			setNewData(newObj);
 			return;
 		}
-	};
-
-	const updateArray = (event) => {
-		const updatedInput = event.target.value;
-		setNewTask(updatedInput);
 	};
 
 	function removeDuplicateObjectsLast(arr, idProperty) {
@@ -55,27 +46,10 @@ function EducationPanel({ ...props }) {
 			.reverse(); // Reverse the result again to get the original order
 	}
 
-	const handleAddTask = (task) => {
-		let newTask = {
-			id: crypto.randomUUID().slice(0, 8),
-			task: task,
-		};
-
-		let newWork = { ...newData };
-		let updatedWork = { ...newWork, summary: [...newWork.summary, newTask] };
-		setNewData(updatedWork);
-		handleUpdateLocal(updatedWork);
-		setNewTask(" ");
-	};
-
-	const handleUpdateLocal = (data) => {
-		let cleanData = { ...data, summary: removeDuplicateObjectsLast(data.summary, "id") };
-		let local = { ...localData, work: [...localData.work, cleanData] };
-		const cleanLocal = { ...local, work: removeDuplicateObjectsLast(local.work, "id") };
-		setLocalData(cleanLocal);
-	};
-
-	const handleUpdateShared = () => {
+	const handleUpdate = () => {
+		let updatedEducation = [...localData.education, newData];
+		updatedEducation = removeDuplicateObjectsLast(updatedEducation, "id");
+		setLocalData({ ...localData, education: updatedEducation });
 		updateSharedData(localData);
 		setNewId(crypto.randomUUID().slice(0, 13));
 	};
@@ -91,14 +65,20 @@ function EducationPanel({ ...props }) {
 			marginTop='1em'>
 			<Stack spacing={6}>
 				<StandardInput
-					label='Title'
-					name='title'
+					label='Degree'
+					name='degree'
 					type='text'
-					placeholder='Title'
-					onChange={() => handleChange(event, "title", newId)}
+					placeholder='Degree'
+					onChange={() => handleChange(event, "degree", newId)}
 				/>
 				<StandardInput
-					hidden={props.link === undefined ? false : true}
+					label='Institution'
+					name='institution'
+					type='text'
+					placeholder='Institution'
+					onChange={() => handleChange(event, "institution", newId)}
+				/>
+				<StandardInput
 					label='Location'
 					name='location'
 					type='text'
@@ -106,22 +86,6 @@ function EducationPanel({ ...props }) {
 					onChange={() => handleChange(event, "location", newId)}
 				/>
 				<StandardInput
-					hidden={props.link === undefined ? true : false}
-					label='URL'
-					name='url'
-					type='link'
-					placeholder='https://www.example.com'
-					onChange={() => handleChange(event, "url", newId)}
-				/>
-				<StandardInput
-					hidden={props.link === undefined ? true : false}
-					label='Date'
-					name='date'
-					type='date'
-					onChange={() => handleChange(event, "date", newId)}
-				/>
-				<StandardInput
-					hidden={props.link === undefined ? false : true}
 					label='Date from'
 					name='dateFrom'
 					type='date'
@@ -129,7 +93,6 @@ function EducationPanel({ ...props }) {
 				/>
 				<div style={{ display: isChecked ? "none" : "block" }}>
 					<StandardInput
-						hidden={props.link === undefined ? false : true}
 						label='Date to'
 						name='dateTo'
 						type='date'
@@ -137,7 +100,6 @@ function EducationPanel({ ...props }) {
 					/>
 				</div>
 				<Checkbox
-					hidden={props.link === undefined ? false : true}
 					name='current'
 					isChecked={isChecked}
 					value={isChecked}
@@ -145,31 +107,12 @@ function EducationPanel({ ...props }) {
 					onChange={() => handleChange(event, "current", newId)}>
 					Current
 				</Checkbox>
-				<SummaryInput
-					hidden={workTasks ? false : true}
-					label='Summary'
-					name='summary'
-					placeholder='Tasks you worked on'
-					mid={newId}
-					hide={workTasks.toString()}
-					value={newTask}
-					onChange={() => updateArray(event)}
-				/>
-				<Button
-					hidden={workTasks ? false : true}
-					colorScheme='twitter'
-					variant='outline'
-					h='1.8rem'
-					size='md'
-					onClick={() => handleAddTask(newTask)}>
-					Add task
-				</Button>
 			</Stack>
 			<AddSectionBtn
 				marginTop='1em'
 				variant='outline'
 				label='Save'
-				onClick={() => handleUpdateShared()}
+				onClick={() => handleUpdate()}
 			/>
 		</Box>
 	);

@@ -10,7 +10,7 @@ export default function BadgeInput({ ...props }) {
 	const handleChange = (event, inputData) => {
 		console.log(inputData);
 		const updatedText = event.target.value;
-		setNewText(updatedText.trim());
+		setNewText(updatedText);
 	};
 
 	const handleUpdate = (updatedText, inputData) => {
@@ -24,7 +24,7 @@ export default function BadgeInput({ ...props }) {
 
 	return (
 		<Box as='div'>
-			<Stack direction={["column", "row"]} spacing='1em'>
+			<Stack direction='column' spacing='1em'>
 				<FormLabel hidden htmlFor={props.name}>
 					{props.label}
 				</FormLabel>

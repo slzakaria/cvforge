@@ -36,8 +36,8 @@ function CvProvider({ children }) {
 		education: [],
 		work: [],
 		projects: [],
-		displayEducation: false,
-		displayProjects: false,
+		displayEducation: true,
+		displayProjects: true,
 		activeColor: "#050505",
 	};
 
@@ -49,7 +49,9 @@ function CvProvider({ children }) {
 		setSharedData(newData);
 	};
 
-	return <CvContext.Provider value={{ sharedData, updateSharedData }}>{children}</CvContext.Provider>;
+	return (
+		<CvContext.Provider value={{ sharedData, updateSharedData }}>{children}</CvContext.Provider>
+	);
 }
 
 export default CvProvider;

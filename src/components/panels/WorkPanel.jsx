@@ -14,11 +14,10 @@ function WorkPanel({ ...props }) {
 	const [isChecked, setIsChecked] = useState(false);
 	const [newTask, setNewTask] = useState(" ");
 
-	const workTasks = props.title === "experience" ? true : false;
-
 	const handleChange = (event, inputData, id) => {
 		let newObj = { ...newData, id: id !== undefined ? id : newId };
 		let updatedText;
+		let updatedChecked;
 
 		if (inputData === "current") {
 			updatedChecked = event.target.checked ? true : false;
@@ -79,6 +78,7 @@ function WorkPanel({ ...props }) {
 	const handleUpdateShared = () => {
 		updateSharedData(localData);
 		setNewId(crypto.randomUUID().slice(0, 13));
+		setNewData({ id: newId, summary: [] });
 	};
 
 	return (
@@ -147,17 +147,14 @@ function WorkPanel({ ...props }) {
 					Current
 				</Checkbox>
 				<SummaryInput
-					hidden={workTasks ? false : true}
 					label='Summary'
 					name='summary'
 					placeholder='Tasks you worked on'
 					mid={newId}
-					hide={workTasks.toString()}
 					value={newTask}
 					onChange={() => updateArray(event)}
 				/>
 				<Button
-					hidden={workTasks ? false : true}
 					colorScheme='twitter'
 					variant='outline'
 					h='1.8rem'

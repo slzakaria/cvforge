@@ -34,6 +34,7 @@ function ToggleInputs({ ...props }) {
 			<FormControl display='flex' alignItems='center'>
 				<FormLabel htmlFor={props.name} mb='0'></FormLabel>
 				<Switch
+					isChecked={props.name === "education" ? isEducation : isProjects}
 					id={props.name}
 					value={props.name === "education" ? isEducation : isProjects}
 					onChange={(e) => handleChange(e, props.name)}

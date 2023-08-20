@@ -6,7 +6,7 @@ function ActionButtons() {
 
 	setTimeout(() => {
 		setIsLoading(false);
-	}, 5000);
+	}, 1000);
 
 	return (
 		<Stack direction='column' spacing={4} align='center' marginTop='.5em'>

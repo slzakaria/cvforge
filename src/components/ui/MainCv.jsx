@@ -35,12 +35,33 @@ function MainCv() {
 
 	let projects = mainCv?.projects.map((item) => {
 		return (
-			<Box as='div' padding={2} key={item.title}>
+			<Box as='div' padding={2} key={item.id}>
 				<Text as='h2' fontSize='0.9em' fontWeight='semibold'>
-					<u>{item.title}</u>
+					<u>{item.title}</u> -- {item.date}
 				</Text>
-				<Text as='p' fontSize='0.9' marginTop='1em' textColor='gray.600'>
-					{item.location} | {item.from} - {item.to}
+				<div>
+					<a href={`https://${item.url}`} target='_blank'>
+						{" "}
+						{item.title}
+					</a>
+				</div>
+			</Box>
+		);
+	});
+
+	let educations = mainCv?.education.map((item) => {
+		return (
+			<Box as='div' padding={2} key={item.id}>
+				<Text as='p' fontSize='0.9em' marginTop='1em' textColor='gray.700'>
+					<span style={{ textTransform: "uppercase" }}> {item.location} </span> | {item.from} -{" "}
+					{item.to}
+				</Text>
+				<Text as='h2' fontSize='0.9em' fontWeight='semibold'>
+					<span style={{ color: sharedData.activeColor, textTransform: "uppercase" }}>
+						{" "}
+						{item.degree}{" "}
+					</span>{" "}
+					-- <u>{item.institution}</u>
 				</Text>
 			</Box>
 		);
@@ -92,6 +113,20 @@ function MainCv() {
 			<Stack spacing={2}>{workHistory}</Stack>
 			<Divider />
 
+			{/* Education section */}
+			<Box padding={2} marginTop='0.5em' style={{ display: isEducation ? "block" : "none" }}>
+				<Text
+					as='h1'
+					fontSize='1.25em'
+					fontWeight='semibold'
+					wordBreak='break-word'
+					color={mainCv.activeColor}>
+					Education
+				</Text>
+				<Stack spacing={2}>{educations}</Stack>
+			</Box>
+			<Divider />
+
 			{/* Projects section */}
 			<Box padding={2} marginTop='0.5em' style={{ display: isProjects ? "block" : "none" }}>
 				<Text
@@ -103,20 +138,6 @@ function MainCv() {
 					Projects
 				</Text>
 				<Stack spacing={2}>{projects}</Stack>
-			</Box>
-			<Divider />
-
-			{/* Education section */}
-			<Box padding={2} marginTop='0.5em' style={{ display: isEducation ? "block" : "none" }}>
-				<Text
-					as='h1'
-					fontSize='1.25em'
-					fontWeight='semibold'
-					wordBreak='break-word'
-					color={mainCv.activeColor}>
-					Education
-				</Text>
-				<Stack spacing={2}></Stack>
 			</Box>
 		</>
 	);
