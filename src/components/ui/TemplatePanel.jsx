@@ -2,7 +2,7 @@ import { Box } from "@chakra-ui/react";
 import SideCv from "./SideCv";
 import MainCv from "./MainCv";
 
-function TemplatePanel() {
+const TemplatePanel = () => {
 	return (
 		<Box as='div' overflowX='hidden' overflowY='auto' display='flex' pos='relative'>
 			{/* CV container below  */}
@@ -31,6 +31,6 @@ function TemplatePanel() {
 			{/* CV container ^ */}
 		</Box>
 	);
-}
+};
 
 export default TemplatePanel;
