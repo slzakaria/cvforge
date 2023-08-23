@@ -1,6 +1,6 @@
-# AST Forge - resume Builder App
+# cv Forge - resume Builder App
 
-**AST Forge** is a web application that allows users to create and customize their own resume by filling out inputs, which are then rendered onto a predefined resume template. Users can then download their customized resume as a PDF file.
+**cv Forge** is a web application that allows users to create and customize their own resume by filling out inputs, which are then rendered onto a predefined resume template. Users can then download their customized resume as a PDF file.
 
 ## Features
 
@@ -41,7 +41,6 @@
 - jsPDF: Library for generating PDF files in the browser.
 - Vite : Project generation and file bundler
 - Chakra Ui : Ui library
-
 
 ### License
 
