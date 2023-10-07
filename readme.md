@@ -50,3 +50,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - This project was inspired by the need for a simple and customizable resume builder tool.
 - Thanks to the open-source community for providing the tools and libraries used in this project.
+
