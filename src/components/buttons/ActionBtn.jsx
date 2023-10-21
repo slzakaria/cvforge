@@ -22,6 +22,10 @@ function ActionButtons() {
 		});
 	};
 
+	const exportSettings = () => {
+		downloadJSONSettings(sharedData);
+	};
+
 	setTimeout(() => {
 		setIsLoading(false);
 	}, 1000);
@@ -41,7 +45,7 @@ function ActionButtons() {
 			<Button width='90%' colorScheme='teal' variant='outline' isDisabled>
 				Import settings
 			</Button>
-			<Button width='90%' colorScheme='orange' variant='outline' isDisabled>
+			<Button onClick={exportSettings} width='90%' colorScheme='orange' variant='outline'>
 				Export settings
 			</Button>
 		</Stack>
