@@ -9,7 +9,6 @@ function ActionButtons() {
 	const { sharedData } = useContext(CvContext);
 	let fullName = `${sharedData.name}${sharedData.lastName}`;
 
-
 	const generatePDF = () => {
 		const input = document.getElementById("cvContainer"); // Replace with your template's ID
 
@@ -22,22 +21,21 @@ function ActionButtons() {
 			pdf.save(`${fullName}.pdf`);
 		});
 	};
-	function downloadJSONSettings(setting) {
 
+	function downloadJSONSettings(setting) {
 		const jsonSetting = JSON.stringify(setting);
-		const blobSetting = new Blob([jsonSetting], { type: 'application/json' });
+		const blobSetting = new Blob([jsonSetting], { type: "application/json" });
 		const url = URL.createObjectURL(blobSetting);
-		const a = document.createElement('a');
+		const a = document.createElement("a");
 		a.href = url;
-		a.download = 'data.json';
+		a.download = "data.json";
 		a.click();
 		URL.revokeObjectURL(url);
 	}
 
-
 	const exportSettings = () => {
-      downloadJSONSettings(sharedData)
-	}
+		downloadJSONSettings(sharedData);
+	};
 
 	setTimeout(() => {
 		setIsLoading(false);
@@ -58,7 +56,13 @@ function ActionButtons() {
 			<Button width='90%' colorScheme='teal' variant='outline' isDisabled>
 				Import settings
 			</Button>
-			<Button width='90%'   colorScheme='orange'	variant='outline' onClick={exportSettings} 	isLoading={isLoading}   loadingText='Loading'>
+			<Button
+				width='90%'
+				colorScheme='orange'
+				variant='outline'
+				onClick={exportSettings}
+				isLoading={isLoading}
+				loadingText='Loading'>
 				Export settings
 			</Button>
 		</Stack>
