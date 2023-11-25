@@ -6,7 +6,6 @@ import TemplatePanel from "./components/ui/TemplatePanel";
 function App() {
 	return (
 		<>
-			{/** put context provider here */}
 			<CvProvider>
 				<Box minHeight='100dvh' display='flex' justifyContent='normal' as='div'>
 					<Box padding='1em' width='[35dvw,40dvw]' bg='#F8FBFD' boxShadow='md'>
