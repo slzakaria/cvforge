@@ -1,6 +1,6 @@
-import { Box, Text, Stack, Skeleton, Divider } from "@chakra-ui/react";
-import { useEffect, useState, useContext } from "react";
-import CvContext from "../../utils/cvContext";
+import { Box, Text, Stack, Skeleton, Divider } from '@chakra-ui/react';
+import { useEffect, useState, useContext } from 'react';
+import CvContext from '../../utils/cvContext';
 
 function MainCv() {
 	const { sharedData } = useContext(CvContext);
@@ -13,7 +13,7 @@ function MainCv() {
 	let workHistory = mainCv?.work.map((item) => {
 		let highpoints = item?.summary.map((sum) => {
 			return (
-				<li style={{ fontSize: ".9em", wordBreak: "break-word" }} key={sum.id}>
+				<li style={{ fontSize: '.9em', wordBreak: 'break-word' }} key={sum.id}>
 					{sum.task}
 				</li>
 			);
@@ -41,7 +41,7 @@ function MainCv() {
 				</Text>
 				<div>
 					<a href={`https://${item.url}`} rel='noreferrer' target='_blank'>
-						{" "}
+						{' '}
 						{item.title}
 					</a>
 				</div>
@@ -53,14 +53,14 @@ function MainCv() {
 		return (
 			<Box as='div' padding={2} key={item.id}>
 				<Text as='p' fontSize='0.9em' marginTop='1em' textColor='gray.700'>
-					<span style={{ textTransform: "uppercase" }}> {item.location} </span> | {item.from} -{" "}
+					<span style={{ textTransform: 'uppercase' }}> {item.location} </span> | {item.from} -{' '}
 					{item.to}
 				</Text>
 				<Text as='h2' fontSize='0.9em' fontWeight='semibold'>
-					<span style={{ color: sharedData.activeColor, textTransform: "uppercase" }}>
-						{" "}
-						{item.degree}{" "}
-					</span>{" "}
+					<span style={{ color: sharedData.activeColor, textTransform: 'uppercase' }}>
+						{' '}
+						{item.degree}{' '}
+					</span>{' '}
 					-- <u>{item.institution}</u>
 				</Text>
 			</Box>
@@ -114,7 +114,7 @@ function MainCv() {
 			<Divider />
 
 			{/* Education section */}
-			<Box padding={2} marginTop='0.5em' style={{ display: isEducation ? "block" : "none" }}>
+			<Box padding={2} marginTop='0.5em' style={{ display: isEducation ? 'block' : 'none' }}>
 				<Text
 					as='h1'
 					fontSize='1.25em'
@@ -128,7 +128,7 @@ function MainCv() {
 			<Divider />
 
 			{/* Projects section */}
-			<Box padding={2} marginTop='0.5em' style={{ display: isProjects ? "block" : "none" }}>
+			<Box padding={2} marginTop='0.5em' style={{ display: isProjects ? 'block' : 'none' }}>
 				<Text
 					as='h1'
 					fontSize='1.25em'
