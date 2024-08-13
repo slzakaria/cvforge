@@ -10,22 +10,22 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
-		"@chakra-ui/icons": "^2.1.0",
-		"@chakra-ui/react": "^2.8.0",
-		"html2canvas": "^1.4.1",
-		"jspdf": "^2.5.1",
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0",
-		"react-icons": "^4.10.1"
+		"@chakra-ui/icons": "^2",
+		"@chakra-ui/react": "^2",
+		"html2canvas": "^1.4",
+		"jspdf": "^2.5",
+		"react": "^18",
+		"react-dom": "^18",
+		"react-icons": "^4"
 	},
 	"devDependencies": {
-		"@types/react": "^18.2.14",
-		"@types/react-dom": "^18.2.6",
-		"@vitejs/plugin-react": "^4.0.1",
+		"@types/react": "^18",
+		"@types/react-dom": "^18",
+		"@vitejs/plugin-react": "^4",
 		"eslint": "^8.44.0",
-		"eslint-plugin-react": "^7.32.2",
-		"eslint-plugin-react-hooks": "^4.6.0",
-		"eslint-plugin-react-refresh": "^0.4.1",
-		"vite": "^4.4.0"
+		"eslint-plugin-react": "^7.32",
+		"eslint-plugin-react-hooks": "^4.6",
+		"eslint-plugin-react-refresh": "^0.4",
+		"vite": "^4"
 	}
 }
