@@ -84,7 +84,7 @@ function MainCv() {
 	return (
 		<>
 			{/* About me section */}
-			<Box padding={2}>
+			<Box padding={2} paddingTop={4}>
 				<Text
 					as='h1'
 					fontSize='1.25em'

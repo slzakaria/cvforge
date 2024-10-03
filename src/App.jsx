@@ -6,9 +6,10 @@ import TemplatePanel from "./components/ui/TemplatePanel";
 function App() {
 	return (
 		<>
+			<div id="PrintLayoutFiller"><div className="side"></div></div>
 			<CvProvider>
 				<Box minHeight='100dvh' display='flex' justifyContent='normal' as='div'>
-					<Box padding='1em' width='[35dvw,40dvw]' bg='#F8FBFD' boxShadow='md'>
+					<Box padding='1em' width='[35dvw,40dvw]' bg='#F8FBFD' boxShadow='md' id="settingsPanel">
 						<SettingsPanel style={{ margin: "0 auto" }} />
 					</Box>
 					<Box

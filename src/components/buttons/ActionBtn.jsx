@@ -22,6 +22,8 @@ function ActionButtons() {
 		});
 	};
 
+	const print = () => window.print();
+
 	function downloadJSONSettings(setting) {
 		const jsonSetting = JSON.stringify(setting);
 		const blobSetting = new Blob([jsonSetting], { type: "application/json" });
@@ -52,6 +54,16 @@ function ActionButtons() {
 				variant='outline'
 				spinnerPlacement='start'>
 				Download resume (PDF)
+			</Button>
+			<Button
+				onClick={print}
+				width='90%'
+				isLoading={isLoading}
+				loadingText='Loading'
+				colorScheme='whatsapp'
+				variant='outline'
+				spinnerPlacement='start'>
+				Print
 			</Button>
 			<Button width='90%' colorScheme='teal' variant='outline' isDisabled>
 				Import settings

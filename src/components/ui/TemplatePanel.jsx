@@ -21,7 +21,7 @@ const TemplatePanel = () => {
 				minHeight='24cm'
 				height='auto'
 				fontSize='0.875em'>
-				<div style={{ background: "#F8FBFD" }}>
+				<div style={{ background: "#F8FBFD" }} id="sideCvContainer">
 					<SideCv />
 				</div>
 				<div style={{ color: "black" }}>
