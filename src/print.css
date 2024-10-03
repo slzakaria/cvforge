@@ -1,0 +1,64 @@
+@page {
+  margin: 0cm;
+  size: A4;
+}
+
+@media print {
+  #settingsPanel {
+    display: none;
+  }
+  #templatePanel {
+    padding: 0;
+    margin: unset;
+    display: flex;
+  }
+  #cvContainer {
+    margin-top: 0;
+    padding: 0;
+    box-shadow: none;
+    transform: none;
+    width: unset;
+    max-width: unset;
+  }
+
+  /* skills tags do not convert to column */
+  #skills_section .chakra-stack .chakra-stack {
+    flex-direction: row;
+  }
+
+  /* ul lists (soft skills, language) give more space to discs */
+  #sideCvContainer ul.chakra-stack {
+    padding-left: var(--chakra-space-4);
+  }
+}
+
+/* improve backgrounds despite browser print background option is selected */
+@media print and (color) {
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+/* 
+ * PrintLayoutFiller
+ * More than one page all pages maintain blue sidebar
+ */
+#PrintLayoutFiller {
+  display: none;
+}
+@media print {
+  #PrintLayoutFiller {
+    position: fixed;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    gap: 0.9em;
+    grid-template-columns: 1fr 2fr;
+  }
+
+  #PrintLayoutFiller .side {
+    background-color: #f8fbfd;
+  }
+}
